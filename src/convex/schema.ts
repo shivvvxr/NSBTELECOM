@@ -18,26 +18,47 @@ export type Role = Infer<typeof roleValidator>;
 
 const schema = defineSchema(
   {
-    // default auth tables using convex auth.
-    ...authTables, // do not remove or modify
+    ...authTables,
 
-    // the users table is the default users table that is brought in by the authTables
     users: defineTable({
-      name: v.optional(v.string()), // name of the user. do not remove
-      image: v.optional(v.string()), // image of the user. do not remove
-      email: v.optional(v.string()), // email of the user. do not remove
-      emailVerificationTime: v.optional(v.number()), // email verification time. do not remove
-      isAnonymous: v.optional(v.boolean()), // is the user anonymous. do not remove
+      name: v.optional(v.string()),
+      image: v.optional(v.string()),
+      email: v.optional(v.string()),
+      emailVerificationTime: v.optional(v.number()),
+      isAnonymous: v.optional(v.boolean()),
+      role: v.optional(roleValidator),
+    }).index("email", ["email"]),
 
-      role: v.optional(roleValidator), // role of the user. do not remove
-    }).index("email", ["email"]), // index for the email. do not remove or modify
+    contacts: defineTable({
+      name: v.string(),
+      email: v.string(),
+      company: v.optional(v.string()),
+      phone: v.optional(v.string()),
+      message: v.string(),
+      service: v.optional(v.string()),
+      status: v.string(),
+    }),
 
-    // add other tables here
+    careers: defineTable({
+      title: v.string(),
+      department: v.string(),
+      location: v.string(),
+      type: v.string(),
+      description: v.string(),
+      requirements: v.array(v.string()),
+      responsibilities: v.array(v.string()),
+      status: v.string(),
+    }),
 
-    // tableName: defineTable({
-    //   ...
-    //   // table fields
-    // }).index("by_field", ["field"])
+    applications: defineTable({
+      jobId: v.id("careers"),
+      name: v.string(),
+      email: v.string(),
+      phone: v.string(),
+      resume: v.optional(v.string()),
+      coverLetter: v.optional(v.string()),
+      status: v.string(),
+    }).index("by_job", ["jobId"]),
   },
   {
     schemaValidation: false,
