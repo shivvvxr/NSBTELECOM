@@ -61,7 +61,7 @@ export default function Contact() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="border text-center glass-card">
+            <Card className="border text-center glass-card glass-hover">
               <CardHeader>
                 <MapPin className="h-8 w-8 mx-auto text-primary mb-2" />
                 <CardTitle className="text-lg">Visit Us</CardTitle>
@@ -72,7 +72,7 @@ export default function Contact() {
               </CardHeader>
             </Card>
 
-            <Card className="border text-center glass-card">
+            <Card className="border text-center glass-card glass-hover">
               <CardHeader>
                 <Phone className="h-8 w-8 mx-auto text-primary mb-2" />
                 <CardTitle className="text-lg">Call Us</CardTitle>
@@ -83,7 +83,7 @@ export default function Contact() {
               </CardHeader>
             </Card>
 
-            <Card className="border text-center glass-card">
+            <Card className="border text-center glass-card glass-hover">
               <CardHeader>
                 <Mail className="h-8 w-8 mx-auto text-primary mb-2" />
                 <CardTitle className="text-lg">Email Us</CardTitle>
