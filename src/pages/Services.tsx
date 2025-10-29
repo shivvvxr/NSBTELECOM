@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 export default function Services() {
   const services = [
     {
+      id: "it-amc",
       icon: Wrench,
       title: "IT AMC & Maintenance",
       description: "Comprehensive annual maintenance contracts for all IT infrastructure",
@@ -18,6 +19,7 @@ export default function Services() {
       ],
     },
     {
+      id: "network-setup",
       icon: Network,
       title: "Network Setup & Configuration",
       description: "Professional network design, installation, and configuration services",
@@ -29,6 +31,7 @@ export default function Services() {
       ],
     },
     {
+      id: "system-integration",
       icon: Layers,
       title: "System Integration & Deployment",
       description: "End-to-end system integration and deployment solutions",
@@ -40,6 +43,7 @@ export default function Services() {
       ],
     },
     {
+      id: "manpower",
       icon: Users,
       title: "Manpower Supply / Contract Staffing",
       description: "Skilled IT professionals for temporary and contract positions",
@@ -51,6 +55,7 @@ export default function Services() {
       ],
     },
     {
+      id: "car-rental",
       icon: Car,
       title: "Car Rental / Vehicle Leasing Services",
       description: "Flexible vehicle rental and leasing solutions for businesses",
@@ -62,6 +67,7 @@ export default function Services() {
       ],
     },
     {
+      id: "cctv",
       icon: Camera,
       title: "CCTV Installation & Surveillance Setup",
       description: "Advanced security camera systems and surveillance solutions",
@@ -73,6 +79,7 @@ export default function Services() {
       ],
     },
     {
+      id: "maintenance-support",
       icon: Headphones,
       title: "Annual Maintenance Support",
       description: "Ongoing technical support and maintenance services",
@@ -84,6 +91,7 @@ export default function Services() {
       ],
     },
     {
+      id: "server-setup",
       icon: Server,
       title: "Server & Data Center Setup",
       description: "Professional server installation and data center infrastructure",
@@ -118,10 +126,12 @@ export default function Services() {
             {services.map((service, index) => (
               <motion.div
                 key={index}
+                id={service.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="scroll-mt-24"
               >
                 <Card className="h-full border hover:shadow-lg transition-shadow">
                   <CardHeader>

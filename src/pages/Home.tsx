@@ -16,21 +16,25 @@ export default function Home() {
       icon: Wrench,
       title: "IT AMC & Maintenance",
       description: "Comprehensive annual maintenance contracts for all IT infrastructure",
+      link: "/services#it-amc"
     },
     {
       icon: Network,
       title: "Network Setup & Configuration",
       description: "Professional network design and configuration services",
+      link: "/services#network-setup"
     },
     {
       icon: Camera,
       title: "CCTV Installation & Surveillance",
       description: "Advanced security camera systems and surveillance solutions",
+      link: "/services#cctv"
     },
     {
       icon: Server,
       title: "Server & Data Center Setup",
       description: "Professional server installation and data center infrastructure",
+      link: "/services#server-setup"
     },
   ];
 
@@ -152,9 +156,9 @@ export default function Home() {
                     <CardDescription>{service.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Link to="/services">
+                    <Link to={service.link}>
                       <Button variant="ghost" className="p-0 h-auto text-primary hover:text-accent">
-                        Learn more <ArrowRight className="ml-2 h-4 w-4" />
+                        Read more <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
                   </CardContent>

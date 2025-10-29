@@ -1,19 +1,42 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 import { Menu } from "lucide-react";
 import { Link, useLocation } from "react-router";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export default function Navbar() {
   const location = useLocation();
 
-  const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Products", path: "/products" },
-    { name: "Careers", path: "/careers" },
-    { name: "Contact", path: "/contact" },
+  const services = [
+    { name: "IT AMC & Maintenance", path: "/services#it-amc" },
+    { name: "Network Setup & Configuration", path: "/services#network-setup" },
+    { name: "System Integration & Deployment", path: "/services#system-integration" },
+    { name: "Manpower Supply / Contract Staffing", path: "/services#manpower" },
+    { name: "Car Rental / Vehicle Leasing", path: "/services#car-rental" },
+    { name: "CCTV Installation & Surveillance", path: "/services#cctv" },
+    { name: "Annual Maintenance Support", path: "/services#maintenance-support" },
+    { name: "Server & Data Center Setup", path: "/services#server-setup" },
+  ];
+
+  const products = [
+    { name: "Laptops & Notebooks", path: "/products#laptops" },
+    { name: "Desktops & Computers", path: "/products#desktops" },
+    { name: "Servers", path: "/products#servers" },
+    { name: "Workstations", path: "/products#workstations" },
+    { name: "Printers", path: "/products#printers" },
+    { name: "CCTV / Surveillance", path: "/products#cctv" },
+    { name: "Interactive Panels", path: "/products#interactive-panels" },
+    { name: "UPS", path: "/products#ups" },
+    { name: "Network Switches", path: "/products#network-switches" },
   ];
 
   return (
@@ -36,16 +59,93 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <Link key={item.path} to={item.path}>
-                <Button
-                  variant={location.pathname === item.path ? "secondary" : "ghost"}
-                  className="text-sm"
-                >
-                  {item.name}
-                </Button>
-              </Link>
-            ))}
+            <Link to="/">
+              <Button
+                variant={location.pathname === "/" ? "secondary" : "ghost"}
+                className="text-sm"
+              >
+                Home
+              </Button>
+            </Link>
+            <Link to="/about">
+              <Button
+                variant={location.pathname === "/about" ? "secondary" : "ghost"}
+                className="text-sm"
+              >
+                About
+              </Button>
+            </Link>
+
+            {/* Services Dropdown */}
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-sm">Services</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                      {services.map((service) => (
+                        <li key={service.path}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              to={service.path}
+                              className={cn(
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              )}
+                            >
+                              <div className="text-sm font-medium leading-none">{service.name}</div>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
+            {/* Products Dropdown */}
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-sm">Products</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                      {products.map((product) => (
+                        <li key={product.path}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              to={product.path}
+                              className={cn(
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              )}
+                            >
+                              <div className="text-sm font-medium leading-none">{product.name}</div>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
+            <Link to="/careers">
+              <Button
+                variant={location.pathname === "/careers" ? "secondary" : "ghost"}
+                className="text-sm"
+              >
+                Careers
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button
+                variant={location.pathname === "/contact" ? "secondary" : "ghost"}
+                className="text-sm"
+              >
+                Contact
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Navigation */}
@@ -57,16 +157,54 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent side="right">
               <div className="flex flex-col space-y-4 mt-8">
-                {navItems.map((item) => (
-                  <Link key={item.path} to={item.path}>
-                    <Button
-                      variant={location.pathname === item.path ? "secondary" : "ghost"}
-                      className="w-full justify-start"
-                    >
-                      {item.name}
-                    </Button>
-                  </Link>
-                ))}
+                <Link to="/">
+                  <Button
+                    variant={location.pathname === "/" ? "secondary" : "ghost"}
+                    className="w-full justify-start"
+                  >
+                    Home
+                  </Button>
+                </Link>
+                <Link to="/about">
+                  <Button
+                    variant={location.pathname === "/about" ? "secondary" : "ghost"}
+                    className="w-full justify-start"
+                  >
+                    About
+                  </Button>
+                </Link>
+                <Link to="/services">
+                  <Button
+                    variant={location.pathname === "/services" ? "secondary" : "ghost"}
+                    className="w-full justify-start"
+                  >
+                    Services
+                  </Button>
+                </Link>
+                <Link to="/products">
+                  <Button
+                    variant={location.pathname === "/products" ? "secondary" : "ghost"}
+                    className="w-full justify-start"
+                  >
+                    Products
+                  </Button>
+                </Link>
+                <Link to="/careers">
+                  <Button
+                    variant={location.pathname === "/careers" ? "secondary" : "ghost"}
+                    className="w-full justify-start"
+                  >
+                    Careers
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button
+                    variant={location.pathname === "/contact" ? "secondary" : "ghost"}
+                    className="w-full justify-start"
+                  >
+                    Contact
+                  </Button>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>

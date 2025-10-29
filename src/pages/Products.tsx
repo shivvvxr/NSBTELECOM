@@ -7,46 +7,55 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 export default function Products() {
   const products = [
     {
+      id: "laptops",
       icon: Laptop,
       title: "Laptops & Notebooks",
       description: "Wide range of business and personal laptops from leading brands",
     },
     {
+      id: "desktops",
       icon: Monitor,
       title: "Desktops & Computers",
       description: "High-performance desktop computers for office and professional use",
     },
     {
+      id: "servers",
       icon: Server,
       title: "Servers",
       description: "Enterprise-grade servers for data centers and business applications",
     },
     {
+      id: "workstations",
       icon: Cpu,
       title: "Workstations",
       description: "Powerful workstations for design, engineering, and intensive computing",
     },
     {
+      id: "printers",
       icon: Printer,
       title: "Printers",
       description: "Multi-function printers, scanners, and printing solutions",
     },
     {
+      id: "cctv",
       icon: Camera,
       title: "CCTV / Surveillance",
       description: "Advanced security cameras and surveillance equipment",
     },
     {
+      id: "interactive-panels",
       icon: Presentation,
       title: "Interactive Panels",
       description: "Smart interactive displays for meetings and presentations",
     },
     {
+      id: "ups",
       icon: Battery,
       title: "UPS",
       description: "Uninterruptible power supply systems for business continuity",
     },
     {
+      id: "network-switches",
       icon: Network,
       title: "Network Switches",
       description: "Managed and unmanaged network switches for all business sizes",
@@ -75,10 +84,12 @@ export default function Products() {
             {products.map((product, index) => (
               <motion.div
                 key={index}
+                id={product.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="scroll-mt-24"
               >
                 <Card className="h-full border hover:shadow-lg transition-shadow text-center">
                   <CardHeader>
