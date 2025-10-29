@@ -61,7 +61,7 @@ export default function Contact() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="border text-center">
+            <Card className="border text-center glass-card">
               <CardHeader>
                 <MapPin className="h-8 w-8 mx-auto text-primary mb-2" />
                 <CardTitle className="text-lg">Visit Us</CardTitle>
@@ -72,7 +72,7 @@ export default function Contact() {
               </CardHeader>
             </Card>
 
-            <Card className="border text-center">
+            <Card className="border text-center glass-card">
               <CardHeader>
                 <Phone className="h-8 w-8 mx-auto text-primary mb-2" />
                 <CardTitle className="text-lg">Call Us</CardTitle>
@@ -83,7 +83,7 @@ export default function Contact() {
               </CardHeader>
             </Card>
 
-            <Card className="border text-center">
+            <Card className="border text-center glass-card">
               <CardHeader>
                 <Mail className="h-8 w-8 mx-auto text-primary mb-2" />
                 <CardTitle className="text-lg">Email Us</CardTitle>
@@ -101,7 +101,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="border max-w-3xl mx-auto">
+            <Card className="border max-w-3xl mx-auto glass-card">
               <CardHeader>
                 <CardTitle className="text-2xl">Send us a message</CardTitle>
                 <CardDescription>Fill out the form below and we'll get back to you within 24 hours</CardDescription>
@@ -111,29 +111,29 @@ export default function Contact() {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name *</Label>
-                      <Input id="name" name="name" required />
+                      <Input id="name" name="name" required className="glass-input" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email *</Label>
-                      <Input id="email" name="email" type="email" required />
+                      <Input id="email" name="email" type="email" required className="glass-input" />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="company">Company</Label>
-                      <Input id="company" name="company" />
+                      <Input id="company" name="company" className="glass-input" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone</Label>
-                      <Input id="phone" name="phone" type="tel" />
+                      <Input id="phone" name="phone" type="tel" className="glass-input" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="service">Service Interest</Label>
                     <Select name="service">
-                      <SelectTrigger>
+                      <SelectTrigger className="glass-input">
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
@@ -149,7 +149,7 @@ export default function Contact() {
 
                   <div className="space-y-2">
                     <Label htmlFor="message">Message *</Label>
-                    <Textarea id="message" name="message" rows={5} required />
+                    <Textarea id="message" name="message" rows={5} required className="glass-input" />
                   </div>
 
                   <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
