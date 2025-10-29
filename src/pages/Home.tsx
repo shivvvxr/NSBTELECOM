@@ -40,7 +40,6 @@ export default function Home() {
 
   const stats = [
     { icon: Users, value: "500+", label: "Global Clients" },
-    { icon: Globe, value: "50+", label: "Countries" },
     { icon: Award, value: "Since 2018", label: "Years of Excellence" },
     { icon: TrendingUp, value: "99.9%", label: "Uptime SLA" },
   ];
@@ -105,7 +104,7 @@ export default function Home() {
       {/* Stats Section with Glass Cards */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
