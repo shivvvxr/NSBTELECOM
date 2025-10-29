@@ -33,7 +33,7 @@ export default function Home() {
   const stats = [
     { icon: Users, value: "500+", label: "Global Clients" },
     { icon: Globe, value: "50+", label: "Countries" },
-    { icon: Award, value: "25+", label: "Years Experience" },
+    { icon: Award, value: "Since 2018", label: "Years of Excellence" },
     { icon: TrendingUp, value: "99.9%", label: "Uptime SLA" },
   ];
 
