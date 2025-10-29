@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <img src="/logo.svg" alt="NSB TELECOM" className="h-8 w-8" />
+              <img src="https://harmless-tapir-303.convex.cloud/api/storage/b770cec3-3a0c-4c9c-b9e5-d0b64ff562c1" alt="NSB TELECOM" className="h-10 w-auto" />
               <span className="text-lg font-bold">NSB TELECOM</span>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
