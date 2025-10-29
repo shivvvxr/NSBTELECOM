@@ -82,17 +82,17 @@ export default function Navbar() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm">Services</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                    <ul className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2 glass-card">
                       {services.map((service) => (
                         <li key={service.path}>
                           <NavigationMenuLink asChild>
                             <Link
                               to={service.path}
                               className={cn(
-                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-primary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-primary/20"
                               )}
                             >
-                              <div className="text-sm font-medium leading-none">{service.name}</div>
+                              <div className="text-sm font-medium leading-snug text-foreground">{service.name}</div>
                             </Link>
                           </NavigationMenuLink>
                         </li>
@@ -109,17 +109,17 @@ export default function Navbar() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm">Products</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                    <ul className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2 glass-card">
                       {products.map((product) => (
                         <li key={product.path}>
                           <NavigationMenuLink asChild>
                             <Link
                               to={product.path}
                               className={cn(
-                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-secondary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-secondary/20"
                               )}
                             >
-                              <div className="text-sm font-medium leading-none">{product.name}</div>
+                              <div className="text-sm font-medium leading-snug text-foreground">{product.name}</div>
                             </Link>
                           </NavigationMenuLink>
                         </li>
