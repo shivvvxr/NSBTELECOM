@@ -76,7 +76,7 @@ export default function Navbar() {
               </Button>
             </Link>
 
-            {/* Services Dropdown */}
+            {/* Services & Products Dropdown */}
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -100,12 +100,6 @@ export default function Navbar() {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-
-            {/* Products Dropdown */}
-            <NavigationMenu>
-              <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm">Products</NavigationMenuTrigger>
                   <NavigationMenuContent>
