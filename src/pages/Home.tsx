@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
-import { ArrowRight, Wrench, Network, Camera, Server, TrendingUp, Users, Globe, Award } from "lucide-react";
+import { ArrowRight, Wrench, Network, Camera, Server, TrendingUp, Users, Globe, Award, Building2 } from "lucide-react";
 
 export default function Home() {
   const services = [
@@ -37,36 +37,52 @@ export default function Home() {
     { icon: TrendingUp, value: "99.9%", label: "Uptime SLA" },
   ];
 
+  const clients = [
+    "CONCOR", "DFCCIL", "IMD", "CESTAT", "IOCL", 
+    "Department of Revenue", "NPS Trust", "PWD", "DGGI"
+  ];
+
   return (
     <div className="min-h-screen">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto max-w-6xl">
+      {/* Hero Section with Glass Effect */}
+      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-green-500/10 to-transparent pointer-events-none" />
+        <div className="container mx-auto max-w-6xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="inline-block mb-6"
+            >
+              <span className="text-sm font-semibold tracking-wider uppercase text-primary">
+                Enterprise IT Solutions Since 2018
+              </span>
+            </motion.div>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-r from-blue-600 via-green-600 to-blue-800 bg-clip-text text-transparent">
               Connecting the Future
               <br />
-              <span className="text-primary">of Technology</span>
+              of Technology
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              NSB TELECOM delivers cutting-edge IT solutions, network infrastructure, and technology services that empower businesses to thrive in the digital age.
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+              NSB TELECOM delivers cutting-edge IT infrastructure, system integration, and maintenance solutions that empower businesses to thrive in the digital age.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/services">
-                <Button size="lg" className="text-base">
+                <Button size="lg" className="text-base glass-hover shadow-lg">
                   Explore Services
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="text-base">
+                <Button size="lg" variant="outline" className="text-base glass-card glass-hover">
                   Partner with Us
                 </Button>
               </Link>
@@ -75,10 +91,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {/* Stats Section with Glass Cards */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
@@ -86,10 +102,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="text-center"
+                className="glass-card glass-hover rounded-xl p-6 text-center"
               >
                 <stat.icon className="h-8 w-8 mx-auto mb-3 text-primary" />
-                <div className="text-3xl font-bold mb-1">{stat.value}</div>
+                <div className="text-3xl font-bold mb-1 bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">{stat.value}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
               </motion.div>
             ))}
@@ -122,7 +138,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer border">
+                <Card className="h-full glass-card glass-hover cursor-pointer">
                   <CardHeader>
                     <service.icon className="h-12 w-12 text-primary mb-4" />
                     <CardTitle>{service.title}</CardTitle>
@@ -130,7 +146,7 @@ export default function Home() {
                   </CardHeader>
                   <CardContent>
                     <Link to="/services">
-                      <Button variant="ghost" className="p-0 h-auto">
+                      <Button variant="ghost" className="p-0 h-auto text-primary hover:text-accent">
                         Learn more <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
@@ -142,23 +158,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-primary text-primary-foreground">
-        <div className="container mx-auto max-w-4xl text-center">
+      {/* Clients Section with Auto-scroll */}
+      <section className="py-16 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold tracking-tight mb-4">Trusted by Leading Organizations</h2>
+            <p className="text-lg text-muted-foreground">
+              Serving government and corporate clients across India
+            </p>
+          </motion.div>
+
+          <div className="relative overflow-hidden">
+            <motion.div
+              animate={{ x: [0, -1000] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="flex gap-8 whitespace-nowrap"
+            >
+              {[...clients, ...clients].map((client, index) => (
+                <div
+                  key={index}
+                  className="glass-card rounded-lg px-8 py-6 inline-flex items-center justify-center min-w-[200px]"
+                >
+                  <Building2 className="h-6 w-6 mr-3 text-primary" />
+                  <span className="font-semibold text-foreground">{client}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-green-600/20 to-blue-800/20 pointer-events-none" />
+        <div className="container mx-auto max-w-4xl text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="glass-card rounded-2xl p-12"
           >
             <h2 className="text-4xl font-bold tracking-tight mb-4">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-lg mb-8 opacity-90">
+            <p className="text-lg mb-8 text-muted-foreground">
               Let's discuss how NSB TELECOM can help you achieve your digital transformation goals.
             </p>
             <Link to="/contact">
-              <Button size="lg" variant="secondary" className="text-base">
+              <Button size="lg" className="text-base shadow-lg">
                 Get in Touch
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>

@@ -36,9 +36,9 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl font-bold tracking-tight mb-6">About NSB TELECOM</h1>
+            <h1 className="text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-blue-600 via-green-600 to-blue-800 bg-clip-text text-transparent">About NSB TELECOM</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              A global leader in telecommunication and IT solutions, empowering businesses worldwide with innovative technology since 2018.
+              Established in 2018 by Mr. Surjit Singh, NSB TELECOM is a trusted name in IT infrastructure, integration, and maintenance — delivering reliable, innovative, and tailored tech solutions to corporate and government clients.
             </p>
           </motion.div>
 
@@ -48,10 +48,11 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              className="glass-card glass-hover rounded-xl p-8"
             >
               <h2 className="text-3xl font-bold tracking-tight mb-4">Our Mission</h2>
               <p className="text-muted-foreground leading-relaxed">
-                To deliver world-class telecommunication and IT infrastructure solutions that enable businesses to connect, innovate, and grow in an increasingly digital world. We are committed to excellence, reliability, and customer success.
+                To deliver world-class IT infrastructure solutions that enable businesses to connect, innovate, and grow in an increasingly digital world. We are committed to excellence, reliability, and customer success.
               </p>
             </motion.div>
 
@@ -60,10 +61,11 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              className="glass-card glass-hover rounded-xl p-8"
             >
               <h2 className="text-3xl font-bold tracking-tight mb-4">Our Vision</h2>
               <p className="text-muted-foreground leading-relaxed">
-                To be the most trusted technology partner globally, recognized for innovation, integrity, and impact. We envision a future where seamless connectivity and intelligent technology drive sustainable growth for all.
+                To be the most trusted technology partner in India, recognized for innovation, integrity, and impact. We envision a future where seamless connectivity and intelligent technology drive sustainable growth for all.
               </p>
             </motion.div>
           </div>
@@ -78,7 +80,7 @@ export default function About() {
             <h2 className="text-3xl font-bold tracking-tight mb-8 text-center">Our Values</h2>
             <div className="grid md:grid-cols-4 gap-6">
               {values.map((value, index) => (
-                <Card key={index} className="text-center border">
+                <Card key={index} className="text-center glass-card glass-hover">
                   <CardHeader>
                     <value.icon className="h-12 w-12 mx-auto text-primary mb-4" />
                     <CardTitle className="text-lg">{value.title}</CardTitle>
@@ -96,18 +98,18 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-muted rounded-lg p-8 md:p-12 mb-16"
+            className="glass-card rounded-xl p-8 md:p-12 mb-16"
           >
             <h2 className="text-3xl font-bold tracking-tight mb-6">Our Story</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Founded in 2018, NSB TELECOM began with a simple mission: to connect businesses with reliable, innovative technology solutions. What started as a regional IT service provider has evolved into a trusted technology partner for government and enterprise clients across India.
+                Founded in 2018 by Mr. Surjit Singh, NSB TELECOM began with a clear mission: to connect businesses with reliable, innovative technology solutions. Despite its name, the firm operates outside the telecommunications sector — focusing instead on enterprise IT infrastructure, system integration, and maintenance.
               </p>
               <p>
-                Today, we serve prestigious clients including government departments, public sector undertakings, and major corporations, delivering comprehensive solutions in IT infrastructure, telecommunications, network setup, cybersecurity, and digital transformation. Our team of expert engineers, consultants, and innovators work tirelessly to ensure our clients stay ahead in the digital age.
+                Today, we serve prestigious clients including government departments, public sector undertakings, and major corporations across India, delivering comprehensive solutions in IT infrastructure, network setup, cybersecurity, and digital transformation. Our team of expert engineers, consultants, and innovators work tirelessly to ensure our clients stay ahead in the digital age.
               </p>
               <p>
-                With strategic partnerships with leading technology providers and a commitment to continuous innovation, NSB TELECOM is positioned at the forefront of the digital revolution, helping businesses navigate complexity and achieve sustainable growth.
+                With strategic partnerships with leading technology providers and a commitment to continuous innovation, NSB TELECOM is positioned at the forefront of India's digital revolution, helping businesses navigate complexity and achieve sustainable growth.
               </p>
             </div>
           </motion.div>
@@ -131,7 +133,7 @@ export default function About() {
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="border hover:shadow-lg transition-shadow text-center h-full">
+                  <Card className="glass-card glass-hover text-center h-full">
                     <CardHeader>
                       <Building2 className="h-10 w-10 mx-auto text-primary mb-3" />
                       <CardTitle className="text-lg">{client.name}</CardTitle>
