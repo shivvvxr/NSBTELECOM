@@ -112,10 +112,24 @@ export default function Navbar() {
                                 <Link
                                   to={service.path}
                                   className={cn(
-                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-primary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-primary/20"
+                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-primary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-primary/20 animate-in fade-in-50 slide-in-from-top-2"
                                   )}
                                 >
-                                  <div className="text-sm font-medium leading-snug text-foreground">{service.name}</div>
+                                  <div className="text-sm font-medium leading-snug text-foreground">
+                                    {servicesSearch && service.name.toLowerCase().includes(servicesSearch.toLowerCase()) ? (
+                                      <>
+                                        {service.name.split(new RegExp(`(${servicesSearch})`, 'gi')).map((part, i) => 
+                                          part.toLowerCase() === servicesSearch.toLowerCase() ? (
+                                            <mark key={i} className="bg-primary/30 text-foreground rounded px-0.5">{part}</mark>
+                                          ) : (
+                                            <span key={i}>{part}</span>
+                                          )
+                                        )}
+                                      </>
+                                    ) : (
+                                      service.name
+                                    )}
+                                  </div>
                                 </Link>
                               </NavigationMenuLink>
                             </li>
@@ -150,10 +164,24 @@ export default function Navbar() {
                                 <Link
                                   to={product.path}
                                   className={cn(
-                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-secondary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-secondary/20"
+                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-secondary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-secondary/20 animate-in fade-in-50 slide-in-from-top-2"
                                   )}
                                 >
-                                  <div className="text-sm font-medium leading-snug text-foreground">{product.name}</div>
+                                  <div className="text-sm font-medium leading-snug text-foreground">
+                                    {productsSearch && product.name.toLowerCase().includes(productsSearch.toLowerCase()) ? (
+                                      <>
+                                        {product.name.split(new RegExp(`(${productsSearch})`, 'gi')).map((part, i) => 
+                                          part.toLowerCase() === productsSearch.toLowerCase() ? (
+                                            <mark key={i} className="bg-secondary/30 text-foreground rounded px-0.5">{part}</mark>
+                                          ) : (
+                                            <span key={i}>{part}</span>
+                                          )
+                                        )}
+                                      </>
+                                    ) : (
+                                      product.name
+                                    )}
+                                  </div>
                                 </Link>
                               </NavigationMenuLink>
                             </li>
