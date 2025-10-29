@@ -8,13 +8,17 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Menu } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Menu, Search } from "lucide-react";
 import { Link, useLocation } from "react-router";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 export default function Navbar() {
   const location = useLocation();
+  const [servicesSearch, setServicesSearch] = useState("");
+  const [productsSearch, setProductsSearch] = useState("");
 
   const services = [
     { name: "IT AMC & Maintenance", path: "/services#it-amc" },
@@ -38,6 +42,14 @@ export default function Navbar() {
     { name: "UPS", path: "/products#ups" },
     { name: "Network Switches", path: "/products#network-switches" },
   ];
+
+  const filteredServices = services.filter(service =>
+    service.name.toLowerCase().includes(servicesSearch.toLowerCase())
+  );
+
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(productsSearch.toLowerCase())
+  );
 
   return (
     <motion.nav
@@ -82,43 +94,77 @@ export default function Navbar() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm">Services</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2 glass-card">
-                      {services.map((service) => (
-                        <li key={service.path}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              to={service.path}
-                              className={cn(
-                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-primary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-primary/20"
-                              )}
-                            >
-                              <div className="text-sm font-medium leading-snug text-foreground">{service.name}</div>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="w-[400px] p-4 md:w-[500px] glass-card">
+                      <div className="relative mb-3">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        <Input
+                          placeholder="Search services..."
+                          value={servicesSearch}
+                          onChange={(e) => setServicesSearch(e.target.value)}
+                          className="pl-9 glass-input"
+                        />
+                      </div>
+                      <ul className="grid gap-2 md:grid-cols-2">
+                        {filteredServices.length > 0 ? (
+                          filteredServices.map((service) => (
+                            <li key={service.path}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  to={service.path}
+                                  className={cn(
+                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-primary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-primary/20"
+                                  )}
+                                >
+                                  <div className="text-sm font-medium leading-snug text-foreground">{service.name}</div>
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))
+                        ) : (
+                          <li className="col-span-2 text-center text-sm text-muted-foreground py-4">
+                            No services found
+                          </li>
+                        )}
+                      </ul>
+                    </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm">Products</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2 glass-card">
-                      {products.map((product) => (
-                        <li key={product.path}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              to={product.path}
-                              className={cn(
-                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-secondary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-secondary/20"
-                              )}
-                            >
-                              <div className="text-sm font-medium leading-snug text-foreground">{product.name}</div>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="w-[400px] p-4 md:w-[500px] glass-card">
+                      <div className="relative mb-3">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        <Input
+                          placeholder="Search products..."
+                          value={productsSearch}
+                          onChange={(e) => setProductsSearch(e.target.value)}
+                          className="pl-9 glass-input"
+                        />
+                      </div>
+                      <ul className="grid gap-2 md:grid-cols-2">
+                        {filteredProducts.length > 0 ? (
+                          filteredProducts.map((product) => (
+                            <li key={product.path}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  to={product.path}
+                                  className={cn(
+                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-secondary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-secondary/20"
+                                  )}
+                                >
+                                  <div className="text-sm font-medium leading-snug text-foreground">{product.name}</div>
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))
+                        ) : (
+                          <li className="col-span-2 text-center text-sm text-muted-foreground py-4">
+                            No products found
+                          </li>
+                        )}
+                      </ul>
+                    </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
               </NavigationMenuList>
