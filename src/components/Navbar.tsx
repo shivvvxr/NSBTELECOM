@@ -105,7 +105,7 @@ export default function Navbar() {
                           placeholder="Search services..."
                           value={servicesSearch}
                           onChange={(e) => setServicesSearch(e.target.value)}
-                          className="pl-9 glass-input"
+                          className="pl-9 glass-input focus:ring-2 focus:ring-primary/30"
                           aria-label="Search services"
                           type="search"
                         />
@@ -118,7 +118,7 @@ export default function Navbar() {
                                 <Link
                                   to={service.path}
                                   className={cn(
-                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-primary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-primary/20 animate-in fade-in-50 slide-in-from-top-2"
+                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-primary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-primary/20 focus:bg-primary/10 focus:border-primary/30 focus:ring-2 focus:ring-primary/20 animate-in fade-in-50 slide-in-from-top-2"
                                   )}
                                   role="menuitem"
                                 >
@@ -160,7 +160,7 @@ export default function Navbar() {
                           placeholder="Search products..."
                           value={productsSearch}
                           onChange={(e) => setProductsSearch(e.target.value)}
-                          className="pl-9 glass-input"
+                          className="pl-9 glass-input focus:ring-2 focus:ring-secondary/30"
                           aria-label="Search products"
                           type="search"
                         />
@@ -173,7 +173,7 @@ export default function Navbar() {
                                 <Link
                                   to={product.path}
                                   className={cn(
-                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-secondary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-secondary/20 animate-in fade-in-50 slide-in-from-top-2"
+                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-secondary/10 hover:shadow-md hover:scale-[1.02] border border-transparent hover:border-secondary/20 focus:bg-secondary/10 focus:border-secondary/30 focus:ring-2 focus:ring-secondary/20 animate-in fade-in-50 slide-in-from-top-2"
                                   )}
                                   role="menuitem"
                                 >
