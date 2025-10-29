@@ -9,7 +9,11 @@ export default function Footer() {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <img src="https://harmless-tapir-303.convex.cloud/api/storage/b770cec3-3a0c-4c9c-b9e5-d0b64ff562c1" alt="NSB TELECOM" className="h-10 w-auto" />
-              <span className="text-lg font-bold">NSB TELECOM</span>
+              <span className="text-lg font-bold">
+                <span style={{ color: '#0066CC' }}>N</span>
+                <span style={{ color: '#00A651' }}>S</span>
+                <span style={{ color: 'rgba(54, 65, 118, 1)' }}>B TELECOM</span>
+              </span>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
               Empowering Connectivity, Driving Innovation

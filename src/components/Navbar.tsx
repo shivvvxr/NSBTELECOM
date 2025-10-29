@@ -28,7 +28,11 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
             <img src="https://harmless-tapir-303.convex.cloud/api/storage/b770cec3-3a0c-4c9c-b9e5-d0b64ff562c1" alt="NSB TELECOM" className="h-10 w-auto" />
-            <span className="text-xl font-bold tracking-tight">NSB TELECOM</span>
+            <span className="text-xl font-bold tracking-tight">
+              <span style={{ color: '#0066CC' }}>N</span>
+              <span style={{ color: '#00A651' }}>S</span>
+              <span style={{ color: 'rgba(54, 65, 118, 1)' }}>B TELECOM</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
