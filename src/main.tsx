@@ -4,6 +4,7 @@ import { InstrumentationProvider } from "@/instrumentation.tsx";
 import AuthPage from "@/pages/Auth.tsx";
 import About from "@/pages/About.tsx";
 import Services from "@/pages/Services.tsx";
+import Products from "@/pages/Products.tsx";
 import Industries from "@/pages/Industries.tsx";
 import Insights from "@/pages/Insights.tsx";
 import Careers from "@/pages/Careers.tsx";
@@ -57,6 +58,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/" element={<Landing />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/products" element={<Products />} />
             <Route path="/industries" element={<Industries />} />
             <Route path="/insights" element={<Insights />} />
             <Route path="/careers" element={<Careers />} />

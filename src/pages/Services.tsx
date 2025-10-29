@@ -1,75 +1,97 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Network, Cloud, Shield, Brain, Headphones, Database } from "lucide-react";
+import { Wrench, Network, Layers, Users, Car, Camera, Headphones, Server } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Services() {
   const services = [
     {
+      icon: Wrench,
+      title: "IT AMC & Maintenance",
+      description: "Comprehensive annual maintenance contracts for all IT infrastructure",
+      features: [
+        "Preventive Maintenance",
+        "On-site Support",
+        "Hardware Repairs",
+        "Software Updates",
+      ],
+    },
+    {
       icon: Network,
-      title: "Telecom Infrastructure",
-      description: "End-to-end network design, deployment, and optimization",
+      title: "Network Setup & Configuration",
+      description: "Professional network design, installation, and configuration services",
       features: [
-        "5G Network Solutions",
-        "Fiber Optic Infrastructure",
-        "Network Modernization",
-        "IoT Connectivity",
+        "LAN/WAN Setup",
+        "Router Configuration",
+        "Network Security",
+        "WiFi Solutions",
       ],
     },
     {
-      icon: Cloud,
-      title: "IT Consulting & Cloud Services",
-      description: "Strategic IT consulting and cloud transformation",
+      icon: Layers,
+      title: "System Integration & Deployment",
+      description: "End-to-end system integration and deployment solutions",
       features: [
-        "Cloud Migration",
-        "Multi-Cloud Strategy",
-        "Infrastructure as Code",
-        "DevOps Implementation",
+        "Hardware Integration",
+        "Software Deployment",
+        "System Testing",
+        "Migration Services",
       ],
     },
     {
-      icon: Brain,
-      title: "AI & Data Analytics",
-      description: "Intelligent insights and predictive analytics",
+      icon: Users,
+      title: "Manpower Supply / Contract Staffing",
+      description: "Skilled IT professionals for temporary and contract positions",
       features: [
-        "Machine Learning Models",
-        "Big Data Processing",
-        "Predictive Analytics",
-        "Business Intelligence",
+        "IT Technicians",
+        "Network Engineers",
+        "System Administrators",
+        "Support Staff",
       ],
     },
     {
-      icon: Shield,
-      title: "Cybersecurity Solutions",
-      description: "Comprehensive security for your digital infrastructure",
+      icon: Car,
+      title: "Car Rental / Vehicle Leasing Services",
+      description: "Flexible vehicle rental and leasing solutions for businesses",
       features: [
-        "Threat Detection & Response",
-        "Security Audits",
-        "Compliance Management",
-        "Zero Trust Architecture",
+        "Short-term Rentals",
+        "Long-term Leasing",
+        "Corporate Packages",
+        "Maintenance Included",
+      ],
+    },
+    {
+      icon: Camera,
+      title: "CCTV Installation & Surveillance Setup",
+      description: "Advanced security camera systems and surveillance solutions",
+      features: [
+        "IP Camera Installation",
+        "DVR/NVR Setup",
+        "Remote Monitoring",
+        "24/7 Recording",
       ],
     },
     {
       icon: Headphones,
-      title: "Managed IT & Network Support",
-      description: "24/7 monitoring and support for your IT infrastructure",
+      title: "Annual Maintenance Support",
+      description: "Ongoing technical support and maintenance services",
       features: [
-        "Network Monitoring",
         "Help Desk Support",
-        "System Maintenance",
-        "Performance Optimization",
+        "Remote Assistance",
+        "Regular Check-ups",
+        "Priority Response",
       ],
     },
     {
-      icon: Database,
-      title: "Data Center Solutions",
-      description: "Scalable and secure data center infrastructure",
+      icon: Server,
+      title: "Server & Data Center Setup",
+      description: "Professional server installation and data center infrastructure",
       features: [
-        "Colocation Services",
-        "Disaster Recovery",
-        "Backup Solutions",
-        "Edge Computing",
+        "Server Installation",
+        "Rack Setup",
+        "Cooling Solutions",
+        "Power Management",
       ],
     },
   ];
@@ -88,7 +110,7 @@ export default function Services() {
           >
             <h1 className="text-5xl font-bold tracking-tight mb-6">Our Services</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive technology solutions designed to accelerate your digital transformation journey
+              Comprehensive IT solutions and services tailored to meet your business needs
             </p>
           </motion.div>
 

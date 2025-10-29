@@ -4,29 +4,29 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
-import { ArrowRight, Network, Cloud, Shield, Brain, TrendingUp, Users, Globe, Award } from "lucide-react";
+import { ArrowRight, Wrench, Network, Camera, Server, TrendingUp, Users, Globe, Award } from "lucide-react";
 
 export default function Home() {
   const services = [
     {
+      icon: Wrench,
+      title: "IT AMC & Maintenance",
+      description: "Comprehensive annual maintenance contracts for all IT infrastructure",
+    },
+    {
       icon: Network,
-      title: "Telecom Infrastructure",
-      description: "Next-generation network solutions for seamless connectivity",
+      title: "Network Setup & Configuration",
+      description: "Professional network design and configuration services",
     },
     {
-      icon: Cloud,
-      title: "Cloud Solutions",
-      description: "Scalable cloud infrastructure and migration services",
+      icon: Camera,
+      title: "CCTV Installation & Surveillance",
+      description: "Advanced security camera systems and surveillance solutions",
     },
     {
-      icon: Shield,
-      title: "Cybersecurity",
-      description: "Advanced security solutions to protect your digital assets",
-    },
-    {
-      icon: Brain,
-      title: "AI & Data Analytics",
-      description: "Intelligent insights powered by machine learning",
+      icon: Server,
+      title: "Server & Data Center Setup",
+      description: "Professional server installation and data center infrastructure",
     },
   ];
 
@@ -56,7 +56,7 @@ export default function Home() {
               <span className="text-primary">of Technology</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              NSB TELECOM delivers cutting-edge telecommunication and IT solutions that empower businesses to thrive in the digital age.
+              NSB TELECOM delivers cutting-edge IT solutions, network infrastructure, and technology services that empower businesses to thrive in the digital age.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/services">
@@ -109,7 +109,7 @@ export default function Home() {
           >
             <h2 className="text-4xl font-bold tracking-tight mb-4">Our Services</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive technology solutions tailored to your business needs
+              Comprehensive IT solutions tailored to your business needs
             </p>
           </motion.div>
 

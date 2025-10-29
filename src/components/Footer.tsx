@@ -34,11 +34,11 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/services" className="hover:text-primary transition-colors">Telecom Infrastructure</Link></li>
-              <li><Link to="/services" className="hover:text-primary transition-colors">IT Consulting</Link></li>
-              <li><Link to="/services" className="hover:text-primary transition-colors">Cloud Solutions</Link></li>
-              <li><Link to="/services" className="hover:text-primary transition-colors">AI & Data Analytics</Link></li>
-              <li><Link to="/services" className="hover:text-primary transition-colors">Cybersecurity</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">IT AMC & Maintenance</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">Network Setup</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">System Integration</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">CCTV Installation</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">Server Setup</Link></li>
             </ul>
           </div>
 
@@ -46,6 +46,7 @@ export default function Footer() {
             <h3 className="font-semibold mb-4">Company</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link to="/products" className="hover:text-primary transition-colors">Products</Link></li>
               <li><Link to="/careers" className="hover:text-primary transition-colors">Careers</Link></li>
               <li><Link to="/insights" className="hover:text-primary transition-colors">Insights</Link></li>
               <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
