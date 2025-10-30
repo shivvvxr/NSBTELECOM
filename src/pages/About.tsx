@@ -1,10 +1,14 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Target, Eye, Award, Users, Building2 } from "lucide-react";
+import { Target, Eye, Award, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { useState } from "react";
 
 export default function About() {
+  const [selectedImage, setSelectedImage] = useState<{ logo: string; name: string; fullName: string } | null>(null);
+
   const values = [
     { icon: Target, title: "Innovation", description: "Pioneering cutting-edge solutions" },
     { icon: Eye, title: "Vision", description: "Leading the digital transformation" },
@@ -133,22 +137,44 @@ export default function About() {
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="glass-card glass-hover text-center h-full">
-                    <CardHeader>
-                      <div className="h-24 flex items-center justify-center mb-4 bg-white/50 dark:bg-gray-800/50 rounded-lg p-3">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Card className="glass-card glass-hover text-center h-full cursor-zoom-in">
+                        <CardHeader>
+                          <div className="h-24 flex items-center justify-center mb-4 bg-white/50 dark:bg-gray-800/50 rounded-lg p-3 relative group">
+                            <img 
+                              src={client.logo} 
+                              alt={`${client.name} logo - ${client.fullName || client.name}`}
+                              className="max-h-20 max-w-[160px] object-contain transition-transform duration-300 hover:scale-105"
+                              loading="lazy"
+                            />
+                            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+                              <span className="text-xs text-primary font-medium">Click to enlarge</span>
+                            </div>
+                          </div>
+                          <CardTitle className="text-lg">{client.name}</CardTitle>
+                          {client.fullName && (
+                            <p className="text-xs text-muted-foreground mt-2">{client.fullName}</p>
+                          )}
+                        </CardHeader>
+                      </Card>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-3xl">
+                      <div className="flex flex-col items-center space-y-4 p-6">
                         <img 
                           src={client.logo} 
                           alt={`${client.name} logo - ${client.fullName || client.name}`}
-                          className="max-h-20 max-w-[160px] object-contain transition-transform duration-300 hover:scale-105"
-                          loading="lazy"
+                          className="max-h-[400px] max-w-full object-contain"
                         />
+                        <div className="text-center">
+                          <h3 className="text-2xl font-bold mb-2">{client.name}</h3>
+                          {client.fullName && (
+                            <p className="text-muted-foreground">{client.fullName}</p>
+                          )}
+                        </div>
                       </div>
-                      <CardTitle className="text-lg">{client.name}</CardTitle>
-                      {client.fullName && (
-                        <p className="text-xs text-muted-foreground mt-2">{client.fullName}</p>
-                      )}
-                    </CardHeader>
-                  </Card>
+                    </DialogContent>
+                  </Dialog>
                 </motion.div>
               ))}
             </div>
