@@ -60,7 +60,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <span>info@nsbtelecom.com</span>
+                <span>nsb85428@gmail.com</span>
               </li>
             </ul>
           </div>
