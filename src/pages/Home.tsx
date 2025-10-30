@@ -46,7 +46,7 @@ export default function Home() {
 
   const clientLogos = [
     { name: "CONCOR", logo: "https://harmless-tapir-303.convex.cloud/api/storage/298bb024-43c4-4fb8-80dc-298601d6f43b" },
-    { name: "DFCCIL", logo: "https://harmless-tapir-303.convex.cloud/api/storage/d86aa2ae-adac-458e-8b13-17144230c227" },
+    { name: "DFCCIL", logo: "https://harmless-tapir-303.convex.cloud/api/storage/52575fe2-658a-47eb-a04b-ffe096ac0ab7" },
     { name: "IMD", logo: "https://harmless-tapir-303.convex.cloud/api/storage/43e0f592-ace2-49e3-97c3-63bdee98636e" },
     { name: "CESTAT", logo: "https://harmless-tapir-303.convex.cloud/api/storage/11d8b098-2dac-4f07-8d6f-f16ca963d9f7" },
     { name: "IOCL", logo: "https://harmless-tapir-303.convex.cloud/api/storage/1581a6ff-89ac-46ea-8518-e3d6daf9dcdd" },
