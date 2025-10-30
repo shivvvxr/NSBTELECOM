@@ -6,7 +6,6 @@ import About from "@/pages/About.tsx";
 import Services from "@/pages/Services.tsx";
 import Products from "@/pages/Products.tsx";
 import Industries from "@/pages/Industries.tsx";
-import Careers from "@/pages/Careers.tsx";
 import Contact from "@/pages/Contact.tsx";
 import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { ConvexReactClient } from "convex/react";
@@ -63,7 +62,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/careers" element={<Careers />} />
+            <Route path="/industries" element={<Industries />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} />
             <Route path="*" element={<NotFound />} />

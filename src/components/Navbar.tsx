@@ -208,15 +208,6 @@ export default function Navbar() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            <Link to="/careers">
-              <Button
-                variant={location.pathname === "/careers" ? "secondary" : "ghost"}
-                className="text-sm"
-                aria-current={location.pathname === "/careers" ? "page" : undefined}
-              >
-                Careers
-              </Button>
-            </Link>
             <Link to="/contact">
               <Button
                 variant={location.pathname === "/contact" ? "secondary" : "ghost"}
@@ -271,15 +262,6 @@ export default function Navbar() {
                     aria-current={location.pathname === "/products" ? "page" : undefined}
                   >
                     Products
-                  </Button>
-                </Link>
-                <Link to="/careers">
-                  <Button
-                    variant={location.pathname === "/careers" ? "secondary" : "ghost"}
-                    className="w-full justify-start"
-                    aria-current={location.pathname === "/careers" ? "page" : undefined}
-                  >
-                    Careers
                   </Button>
                 </Link>
                 <Link to="/contact">
