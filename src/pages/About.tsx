@@ -159,17 +159,19 @@ export default function About() {
                         </CardHeader>
                       </Card>
                     </DialogTrigger>
-                    <DialogContent className="max-w-3xl">
-                      <div className="flex flex-col items-center space-y-4 p-6">
-                        <img 
-                          src={client.logo} 
-                          alt={`${client.name} logo - ${client.fullName || client.name}`}
-                          className="max-h-[400px] max-w-full object-contain"
-                        />
-                        <div className="text-center">
-                          <h3 className="text-2xl font-bold mb-2">{client.name}</h3>
+                    <DialogContent className="max-w-3xl glass-card border-2">
+                      <div className="flex flex-col items-center space-y-6 p-8">
+                        <div className="w-full bg-white/80 dark:bg-gray-800/80 rounded-xl p-8 shadow-lg">
+                          <img 
+                            src={client.logo} 
+                            alt={`${client.name} logo - ${client.fullName || client.name}`}
+                            className="max-h-[400px] max-w-full object-contain mx-auto"
+                          />
+                        </div>
+                        <div className="text-center space-y-2">
+                          <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-green-600 to-blue-800 bg-clip-text text-transparent">{client.name}</h3>
                           {client.fullName && (
-                            <p className="text-muted-foreground">{client.fullName}</p>
+                            <p className="text-lg text-muted-foreground">{client.fullName}</p>
                           )}
                         </div>
                       </div>
