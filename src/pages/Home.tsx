@@ -44,9 +44,16 @@ export default function Home() {
     { icon: TrendingUp, value: "99.9%", label: "Uptime SLA" },
   ];
 
-  const clients = [
-    "CONCOR", "DFCCIL", "IMD", "CESTAT", "IOCL", 
-    "Department of Revenue", "NPS Trust", "PWD", "DGGI"
+  const clientLogos = [
+    { name: "CONCOR", logo: "https://harmless-tapir-303.convex.cloud/api/storage/08fedfe7-e005-41ff-9ff5-b193a0bc8f40" },
+    { name: "DFCCIL", logo: "https://harmless-tapir-303.convex.cloud/api/storage/d86aa2ae-adac-458e-8b13-17144230c227" },
+    { name: "IMD", logo: "https://harmless-tapir-303.convex.cloud/api/storage/43e0f592-ace2-49e3-97c3-63bdee98636e" },
+    { name: "CESTAT", logo: "https://harmless-tapir-303.convex.cloud/api/storage/11d8b098-2dac-4f07-8d6f-f16ca963d9f7" },
+    { name: "IOCL", logo: "https://harmless-tapir-303.convex.cloud/api/storage/1581a6ff-89ac-46ea-8518-e3d6daf9dcdd" },
+    { name: "Department of Revenue", logo: "https://harmless-tapir-303.convex.cloud/api/storage/34dcec3c-a954-45af-88f2-13ed96c920f2" },
+    { name: "NPS Trust", logo: "https://harmless-tapir-303.convex.cloud/api/storage/f96d38a6-d138-4fb2-a7c0-f51dfb36a228" },
+    { name: "PWD", logo: "https://harmless-tapir-303.convex.cloud/api/storage/bc8d3e6e-b4ba-42dc-9c45-99ee9e4a4693" },
+    { name: "DGGI", logo: "https://harmless-tapir-303.convex.cloud/api/storage/ed1156bf-1983-459d-993c-afe836e511c0" },
   ];
 
   return (
@@ -187,16 +194,19 @@ export default function Home() {
           <div className="relative overflow-hidden">
             <motion.div
               animate={{ x: [0, -1000] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
               className="flex gap-8 whitespace-nowrap"
             >
-              {[...clients, ...clients].map((client, index) => (
+              {[...clientLogos, ...clientLogos].map((client, index) => (
                 <div
                   key={index}
-                  className="glass-card rounded-lg px-8 py-6 inline-flex items-center justify-center min-w-[200px]"
+                  className="glass-card rounded-lg px-8 py-6 inline-flex items-center justify-center min-w-[200px] h-[120px]"
                 >
-                  <Building2 className="h-6 w-6 mr-3 text-primary" />
-                  <span className="font-semibold text-foreground">{client}</span>
+                  <img 
+                    src={client.logo} 
+                    alt={client.name}
+                    className="max-h-[80px] max-w-[160px] object-contain"
+                  />
                 </div>
               ))}
             </motion.div>
