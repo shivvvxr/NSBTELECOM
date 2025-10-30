@@ -52,7 +52,7 @@ export default function Home() {
     { name: "IOCL", logo: "https://harmless-tapir-303.convex.cloud/api/storage/1581a6ff-89ac-46ea-8518-e3d6daf9dcdd" },
     { name: "Department of Revenue", logo: "https://harmless-tapir-303.convex.cloud/api/storage/975ef62f-afa2-40cb-a1f3-ec03c851b098" },
     { name: "NPS Trust", logo: "https://harmless-tapir-303.convex.cloud/api/storage/ef7b0450-6b1e-4a67-8069-874fd8b7c97c" },
-    { name: "PWD", logo: "https://harmless-tapir-303.convex.cloud/api/storage/bc8d3e6e-b4ba-42dc-9c45-99ee9e4a4693" },
+    { name: "PWD", logo: "https://harmless-tapir-303.convex.cloud/api/storage/0e3de3d8-8e8c-45dd-b2a8-b8909f3c3e43" },
     { name: "DGGI", logo: "https://harmless-tapir-303.convex.cloud/api/storage/ed1156bf-1983-459d-993c-afe836e511c0" },
   ];
 
