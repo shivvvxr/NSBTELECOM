@@ -13,15 +13,15 @@ export default function About() {
   ];
 
   const clients = [
-    { name: "CONCOR", fullName: "Container Corporation of India" },
-    { name: "DFCCIL", fullName: "Dedicated Freight Corridor Corporation of India Limited" },
-    { name: "IMD", fullName: "India Meteorological Department" },
-    { name: "CESTAT", fullName: "Customs, Excise & Service Tax Appellate Tribunal" },
-    { name: "IOCL", fullName: "Indian Oil Corporation Limited" },
-    { name: "Department of Revenue", fullName: "" },
-    { name: "NPS Trust", fullName: "National Pension System Trust" },
-    { name: "PWD", fullName: "Public Works Department" },
-    { name: "DGGI", fullName: "Directorate General of GST Intelligence" },
+    { name: "CONCOR", fullName: "Container Corporation of India", logo: "https://harmless-tapir-303.convex.cloud/api/storage/08fedfe7-e005-41ff-9ff5-b193a0bc8f40" },
+    { name: "DFCCIL", fullName: "Dedicated Freight Corridor Corporation of India Limited", logo: "https://harmless-tapir-303.convex.cloud/api/storage/d86aa2ae-adac-458e-8b13-17144230c227" },
+    { name: "IMD", fullName: "India Meteorological Department", logo: "https://harmless-tapir-303.convex.cloud/api/storage/43e0f592-ace2-49e3-97c3-63bdee98636e" },
+    { name: "CESTAT", fullName: "Customs, Excise & Service Tax Appellate Tribunal", logo: "https://harmless-tapir-303.convex.cloud/api/storage/11d8b098-2dac-4f07-8d6f-f16ca963d9f7" },
+    { name: "IOCL", fullName: "Indian Oil Corporation Limited", logo: "https://harmless-tapir-303.convex.cloud/api/storage/1581a6ff-89ac-46ea-8518-e3d6daf9dcdd" },
+    { name: "Department of Revenue", fullName: "", logo: "https://harmless-tapir-303.convex.cloud/api/storage/34dcec3c-a954-45af-88f2-13ed96c920f2" },
+    { name: "NPS Trust", fullName: "National Pension System Trust", logo: "https://harmless-tapir-303.convex.cloud/api/storage/f96d38a6-d138-4fb2-a7c0-f51dfb36a228" },
+    { name: "PWD", fullName: "Public Works Department", logo: "https://harmless-tapir-303.convex.cloud/api/storage/bc8d3e6e-b4ba-42dc-9c45-99ee9e4a4693" },
+    { name: "DGGI", fullName: "Directorate General of GST Intelligence", logo: "https://harmless-tapir-303.convex.cloud/api/storage/ed1156bf-1983-459d-993c-afe836e511c0" },
   ];
 
   return (
@@ -135,7 +135,13 @@ export default function About() {
                 >
                   <Card className="glass-card glass-hover text-center h-full">
                     <CardHeader>
-                      <Building2 className="h-10 w-10 mx-auto text-primary mb-3" />
+                      <div className="h-24 flex items-center justify-center mb-4">
+                        <img 
+                          src={client.logo} 
+                          alt={client.name}
+                          className="max-h-20 max-w-[160px] object-contain"
+                        />
+                      </div>
                       <CardTitle className="text-lg">{client.name}</CardTitle>
                       {client.fullName && (
                         <p className="text-xs text-muted-foreground mt-2">{client.fullName}</p>
