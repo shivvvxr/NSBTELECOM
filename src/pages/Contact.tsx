@@ -66,19 +66,8 @@ export default function Contact() {
                 <MapPin className="h-8 w-8 mx-auto text-primary mb-2" />
                 <CardTitle className="text-lg">Visit Us</CardTitle>
                 <CardDescription>
-                  Global HQ, Tech Park<br />
-                  Silicon Valley, CA 94025
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border text-center glass-card glass-hover">
-              <CardHeader>
-                <Phone className="h-8 w-8 mx-auto text-primary mb-2" />
-                <CardTitle className="text-lg">Call Us</CardTitle>
-                <CardDescription>
-                  +1 (800) 123-4567<br />
-                  Mon-Fri, 9AM-6PM PST
+                  Shakti Khand 1, Indirapuram<br />
+                  Ghaziabad, Uttar Pradesh
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -90,6 +79,17 @@ export default function Contact() {
                 <CardDescription>
                   info@nsbtelecom.com<br />
                   sales@nsbtelecom.com
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border text-center glass-card glass-hover">
+              <CardHeader>
+                <Phone className="h-8 w-8 mx-auto text-primary mb-2" />
+                <CardTitle className="text-lg">Business Hours</CardTitle>
+                <CardDescription>
+                  Monday - Friday<br />
+                  9:00 AM - 6:00 PM IST
                 </CardDescription>
               </CardHeader>
             </Card>
