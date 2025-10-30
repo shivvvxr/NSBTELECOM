@@ -48,7 +48,7 @@ export default function Home() {
     { name: "CONCOR", logo: "https://harmless-tapir-303.convex.cloud/api/storage/298bb024-43c4-4fb8-80dc-298601d6f43b" },
     { name: "DFCCIL", logo: "https://harmless-tapir-303.convex.cloud/api/storage/52575fe2-658a-47eb-a04b-ffe096ac0ab7" },
     { name: "IMD", logo: "https://harmless-tapir-303.convex.cloud/api/storage/7f6e804d-c14c-4372-aaa2-a47e4fd897ee" },
-    { name: "CESTAT", logo: "https://harmless-tapir-303.convex.cloud/api/storage/11d8b098-2dac-4f07-8d6f-f16ca963d9f7" },
+    { name: "CESTAT", logo: "https://harmless-tapir-303.convex.cloud/api/storage/823ea33d-fe46-49a4-9ead-9c9f97c514fc" },
     { name: "IOCL", logo: "https://harmless-tapir-303.convex.cloud/api/storage/1581a6ff-89ac-46ea-8518-e3d6daf9dcdd" },
     { name: "Department of Revenue", logo: "https://harmless-tapir-303.convex.cloud/api/storage/34dcec3c-a954-45af-88f2-13ed96c920f2" },
     { name: "NPS Trust", logo: "https://harmless-tapir-303.convex.cloud/api/storage/f96d38a6-d138-4fb2-a7c0-f51dfb36a228" },
