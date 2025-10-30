@@ -135,11 +135,12 @@ export default function About() {
                 >
                   <Card className="glass-card glass-hover text-center h-full">
                     <CardHeader>
-                      <div className="h-24 flex items-center justify-center mb-4">
+                      <div className="h-24 flex items-center justify-center mb-4 bg-white/50 dark:bg-gray-800/50 rounded-lg p-3">
                         <img 
                           src={client.logo} 
-                          alt={client.name}
-                          className="max-h-20 max-w-[160px] object-contain"
+                          alt={`${client.name} logo - ${client.fullName || client.name}`}
+                          className="max-h-20 max-w-[160px] object-contain transition-transform duration-300 hover:scale-105"
+                          loading="lazy"
                         />
                       </div>
                       <CardTitle className="text-lg">{client.name}</CardTitle>

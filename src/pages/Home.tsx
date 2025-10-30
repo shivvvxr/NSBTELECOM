@@ -200,12 +200,13 @@ export default function Home() {
               {[...clientLogos, ...clientLogos].map((client, index) => (
                 <div
                   key={index}
-                  className="glass-card rounded-lg px-8 py-6 inline-flex items-center justify-center min-w-[200px] h-[120px]"
+                  className="glass-card rounded-lg px-8 py-6 inline-flex items-center justify-center min-w-[200px] h-[120px] bg-white/50 dark:bg-gray-800/50"
                 >
                   <img 
                     src={client.logo} 
-                    alt={client.name}
-                    className="max-h-[80px] max-w-[160px] object-contain"
+                    alt={`${client.name} logo`}
+                    className="max-h-[80px] max-w-[160px] object-contain transition-transform duration-300 hover:scale-110"
+                    loading="lazy"
                   />
                 </div>
               ))}
