@@ -77,7 +77,7 @@ export default function Contact() {
                 <Mail className="h-8 w-8 mx-auto text-primary mb-2" />
                 <CardTitle className="text-lg">Email Us</CardTitle>
                 <CardDescription>
-                  info@nsbtelecom.com<br />
+                  nsb85428@gmail.com<br />
                   sales@nsbtelecom.com
                 </CardDescription>
               </CardHeader>
