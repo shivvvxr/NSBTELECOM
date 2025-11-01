@@ -29,6 +29,8 @@ export default function Navbar() {
     { name: "CCTV Installation & Surveillance", path: "/services#cctv" },
     { name: "Annual Maintenance Support", path: "/services#maintenance-support" },
     { name: "Server & Data Center Setup", path: "/services#server-setup" },
+    { name: "Web Development", path: "/services#web-development" },
+    { name: "Software Development", path: "/services#software-development" },
   ];
 
   const products = [
