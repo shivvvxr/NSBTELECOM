@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { mutation, query, action } from "./_generated/server";
+import { mutation, query, internalAction } from "./_generated/server";
 import { internal } from "./_generated/api";
 
 export const create = mutation({
@@ -24,7 +24,6 @@ export const create = mutation({
     
     // Send email notification
     await ctx.scheduler.runAfter(0, internal.contacts.sendContactEmail, {
-      contactId,
       name: args.name,
       email: args.email,
       company: args.company,
@@ -44,9 +43,8 @@ export const list = query({
   },
 });
 
-export const sendContactEmail = action({
+export const sendContactEmail = internalAction({
   args: {
-    contactId: v.id("contacts"),
     name: v.string(),
     email: v.string(),
     company: v.optional(v.string()),
