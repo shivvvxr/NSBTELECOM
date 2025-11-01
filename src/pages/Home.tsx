@@ -200,14 +200,17 @@ export default function Home() {
               {[...clientLogos, ...clientLogos].map((client, index) => (
                 <div
                   key={index}
-                  className="glass-card rounded-lg px-8 py-6 inline-flex items-center justify-center min-w-[200px] h-[120px] bg-white/50 dark:bg-gray-800/50"
+                  className="glass-card rounded-lg px-8 py-6 inline-flex flex-col items-center justify-center min-w-[200px] h-[120px] bg-white/50 dark:bg-gray-800/50 group relative"
                 >
                   <img 
                     src={client.logo} 
                     alt={`${client.name} logo`}
-                    className="max-h-[80px] max-w-[160px] object-contain transition-transform duration-300 hover:scale-110"
+                    className="max-h-[80px] max-w-[160px] object-contain transition-transform duration-300 group-hover:scale-110"
                     loading="lazy"
                   />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-lg px-2 py-1">
+                    <p className="text-xs font-semibold text-white text-center truncate">{client.name}</p>
+                  </div>
                 </div>
               ))}
             </motion.div>
