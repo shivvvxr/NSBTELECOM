@@ -13,7 +13,7 @@ export default function SplashCursor() {
         height: '100vh',
         width: '100vw',
         background: 'transparent',
-        zIndex: 10,
+        zIndex: 1,
         pointerEvents: 'none',
       }}
       eventSource={document.body}
@@ -24,12 +24,16 @@ export default function SplashCursor() {
         <EffectComposer disableNormalPass multisampling={0}>
           <Fluid
             showBackground={false}
-            rainbow={true}
-            blend={5}
-            intensity={10}
-            distortion={2}
+            rainbow={false}
+            fluidColor="#0066CC"
+            blend={2}
+            intensity={5}
+            distortion={0.5}
             curl={10}
-            swirl={20}
+            swirl={10}
+            densityDissipation={0.96}
+            velocityDissipation={0.98}
+            pressureDissipation={0.8}
           />
         </EffectComposer>
       </Suspense>
