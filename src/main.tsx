@@ -20,6 +20,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import LoadingScreen from "@/components/LoadingScreen";
 import { AnimatePresence, motion } from "framer-motion";
 import SplashCursor from "@/components/SplashCursor";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
@@ -53,7 +54,9 @@ function App() {
     <StrictMode>
       <InstrumentationProvider>
         <ConvexAuthProvider client={convex}>
-          <SplashCursor />
+          <ErrorBoundary fallback={null}>
+            <SplashCursor />
+          </ErrorBoundary>
           <AnimatePresence mode="wait">
             {isLoading ? (
               <LoadingScreen key="loading" onComplete={() => setIsLoading(false)} />
