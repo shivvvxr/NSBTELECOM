@@ -8,6 +8,7 @@ import { ArrowRight, Wrench, Network, Camera, Server, TrendingUp, Users, Award }
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import { CheckCircle2, ShieldCheck, Zap, Clock } from "lucide-react";
 import { useNavigate } from "react-router";
+import BlurText from "@/components/BlurText";
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -87,11 +88,22 @@ export default function Home() {
                 Enterprise IT Solutions Since 2018
               </span>
             </motion.div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-r from-blue-600 via-green-600 to-blue-800 bg-clip-text text-transparent">
-              Connecting the Future
-              <br />
-              of Technology
-            </h1>
+            <div className="flex flex-col items-center mb-6">
+              <BlurText
+                text="Connecting the Future"
+                className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-blue-600 via-green-600 to-blue-800 bg-clip-text text-transparent justify-center text-center"
+                delay={150}
+                animateBy="words"
+                direction="top"
+              />
+              <BlurText
+                text="of Technology"
+                className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-blue-600 via-green-600 to-blue-800 bg-clip-text text-transparent justify-center text-center"
+                delay={150}
+                animateBy="words"
+                direction="top"
+              />
+            </div>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
               NSB TELECOM delivers cutting-edge IT infrastructure, system integration, and maintenance solutions that empower businesses to thrive in the digital age.
             </p>
