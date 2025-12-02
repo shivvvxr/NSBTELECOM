@@ -1,1 +1,1 @@
-npm install gsap
+pnpm install
