@@ -55,11 +55,11 @@ export default function Navbar() {
   );
 
   const menuItems = [
-    { label: 'Home', link: '/' },
-    { label: 'About', link: '/about' },
-    { label: 'Services', link: '/services' },
-    { label: 'Products', link: '/products' },
-    { label: 'Contact', link: '/contact' }
+    { label: 'HOME', link: '/' },
+    { label: 'ABOUT US', link: '/about' },
+    { label: 'SERVICES', link: '/services' },
+    { label: 'PRODUCTS', link: '/products' },
+    { label: 'CONTACT', link: '/contact' }
   ];
 
   const socialItems = [
