@@ -1,0 +1,7 @@
+{
+  "file_paths": [
+    "src/pages/Services.tsx",
+    "src/pages/Products.tsx"
+  ],
+  "replace_files_in_context": true
+}
