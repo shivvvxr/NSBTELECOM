@@ -243,8 +243,8 @@ export default function Navbar() {
                 items={menuItems}
                 socialItems={socialItems}
                 logoUrl="https://harmless-tapir-303.convex.cloud/api/storage/b770cec3-3a0c-4c9c-b9e5-d0b64ff562c1"
-                menuButtonColor="#000"
-                openMenuButtonColor="#000"
+                menuButtonColor="currentColor"
+                openMenuButtonColor="currentColor"
                 colors={['#e0f2fe', '#dcfce7', '#f3e8ff']}
                 accentColor="#0066CC"
               />

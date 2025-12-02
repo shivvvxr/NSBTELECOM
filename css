@@ -1,0 +1,13 @@
+:root {
+  --foreground: 222.2 84% 4.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* ... */
+}

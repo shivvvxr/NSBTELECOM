@@ -438,7 +438,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       <aside 
         id="staggered-menu-panel" 
         ref={panelRef} 
-        className="staggered-menu-panel" 
+        className="staggered-menu-panel bg-background/90 backdrop-blur-xl border-l border-border" 
         aria-hidden={!open}
         role="dialog"
         aria-modal="true"
@@ -450,7 +450,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               items.map((it, idx) => (
                 <li className="sm-panel-itemWrap" key={it.label + idx}>
                   <Link 
-                    className="sm-panel-item" 
+                    className="sm-panel-item text-foreground hover:text-primary" 
                     to={it.link} 
                     aria-label={it.ariaLabel || it.label} 
                     data-index={idx + 1}
