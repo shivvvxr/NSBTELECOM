@@ -12,6 +12,7 @@ import BlurText from "@/components/BlurText";
 import ScrollFloat from "@/components/ScrollFloat";
 import PillNav from "@/components/PillNav";
 import { useLocation } from "react-router";
+import MagicBento from "@/components/MagicBento";
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -240,6 +241,38 @@ export default function Home() {
               </div>
             </ScrollStackItem>
           </ScrollStack>
+        </div>
+      </section>
+
+      {/* Magic Bento Section */}
+      <section className="py-20 px-4 bg-[#030014] text-white overflow-hidden relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-[#030014] to-[#030014] pointer-events-none" />
+        <div className="container mx-auto flex flex-col items-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold tracking-tight mb-4 text-white">Digital Ecosystem</h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              Integrated solutions for a connected world
+            </p>
+          </motion.div>
+          
+          <MagicBento 
+            textAutoHide={true} 
+            enableStars={true} 
+            enableSpotlight={true} 
+            enableBorderGlow={true} 
+            enableTilt={true} 
+            enableMagnetism={true} 
+            clickEffect={true} 
+            spotlightRadius={300} 
+            particleCount={12} 
+            glowColor="132, 0, 255"
+          />
         </div>
       </section>
 

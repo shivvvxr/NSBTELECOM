@@ -10,39 +10,39 @@ const MOBILE_BREAKPOINT = 768;
 const cardData = [
   {
     color: '#060010',
-    title: 'Analytics',
-    description: 'Track user behavior',
-    label: 'Insights'
+    title: 'Infrastructure',
+    description: 'Robust IT backbones',
+    label: 'Core'
   },
   {
     color: '#060010',
-    title: 'Dashboard',
-    description: 'Centralized data view',
-    label: 'Overview'
+    title: 'Surveillance',
+    description: 'Advanced CCTV systems',
+    label: 'Security'
   },
   {
     color: '#060010',
-    title: 'Collaboration',
-    description: 'Work together seamlessly',
-    label: 'Teamwork'
+    title: 'Networking',
+    description: 'Seamless connectivity',
+    label: 'Connect'
   },
   {
     color: '#060010',
-    title: 'Automation',
-    description: 'Streamline workflows',
-    label: 'Efficiency'
+    title: 'Data Centers',
+    description: 'Scalable server solutions',
+    label: 'Storage'
   },
   {
     color: '#060010',
-    title: 'Integration',
-    description: 'Connect favorite tools',
-    label: 'Connectivity'
+    title: 'Maintenance',
+    description: '24/7 AMC support',
+    label: 'Support'
   },
   {
     color: '#060010',
-    title: 'Security',
-    description: 'Enterprise-grade protection',
-    label: 'Protection'
+    title: 'Cybersecurity',
+    description: 'Enterprise protection',
+    label: 'Guard'
   }
 ];
 
