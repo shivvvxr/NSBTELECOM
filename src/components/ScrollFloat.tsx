@@ -66,6 +66,19 @@ const ScrollFloat = ({
     const charElements = el.querySelectorAll('.char');
 
     const ctx = gsap.context(() => {
+      // Accessibility: Respect reduced motion preferences
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      
+      if (prefersReducedMotion) {
+        gsap.set(charElements, { 
+          opacity: 1, 
+          yPercent: 0, 
+          scaleY: 1, 
+          scaleX: 1 
+        });
+        return;
+      }
+
       gsap.fromTo(
         charElements,
         {
@@ -99,8 +112,8 @@ const ScrollFloat = ({
   }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger]);
 
   return (
-    <h2 ref={containerRef} className={`scroll-float ${containerClassName}`}>
-      <span className={`scroll-float-text ${textClassName}`}>{splitText}</span>
+    <h2 ref={containerRef} className={`scroll-float ${containerClassName}`} aria-label={children}>
+      <span className={`scroll-float-text ${textClassName}`} aria-hidden="true">{splitText}</span>
     </h2>
   );
 };
