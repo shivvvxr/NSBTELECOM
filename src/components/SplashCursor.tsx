@@ -17,7 +17,8 @@ export default function SplashCursor() {
         pointerEvents: 'none',
       }}
       eventSource={document.body}
-      gl={{ alpha: true, antialias: false }}
+      gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
+      dpr={[1, 1]}
     >
       <Suspense fallback={null}>
         <EffectComposer disableNormalPass multisampling={0}>

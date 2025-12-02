@@ -42,6 +42,7 @@ const ScrollStack = ({
   const animationFrameRef = useRef<number | null>(null);
   const lenisRef = useRef<Lenis | null>(null);
   const cardsRef = useRef<HTMLElement[]>([]);
+  const cardTopOffsetsRef = useRef<number[]>([]);
   const lastTransformsRef = useRef(new Map());
   const isUpdatingRef = useRef(false);
 
@@ -88,6 +89,11 @@ const ScrollStack = ({
     [useWindowScroll]
   );
 
+  const measureCardPositions = useCallback(() => {
+    if (!cardsRef.current.length) return;
+    cardTopOffsetsRef.current = cardsRef.current.map(card => getElementOffset(card));
+  }, [getElementOffset]);
+
   const updateCardTransforms = useCallback(() => {
     if (!cardsRef.current.length || isUpdatingRef.current) return;
     isUpdatingRef.current = true;
@@ -98,11 +104,11 @@ const ScrollStack = ({
     // Always scope to the current component instance to avoid conflicts
     const endElement = scrollerRef.current?.querySelector('.scroll-stack-end') as HTMLElement;
       
-    const endElementTop = endElement ? getElementOffset(endElement) : 0;
+    const endElementTop = endElement ? (useWindowScroll ? endElement.getBoundingClientRect().top + window.scrollY : endElement.offsetTop) : 0;
 
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
-      const cardTop = getElementOffset(card);
+      const cardTop = cardTopOffsetsRef.current[i] || 0;
       const triggerStart = cardTop - stackPositionPx - itemStackDistance * i;
       const triggerEnd = cardTop - scaleEndPositionPx;
       const pinStart = cardTop - stackPositionPx - itemStackDistance * i;
@@ -185,7 +191,6 @@ const ScrollStack = ({
     calculateProgress,
     parsePercentage,
     getScrollData,
-    getElementOffset
   ]);
 
   const handleScroll = useCallback(() => {
@@ -269,10 +274,18 @@ const ScrollStack = ({
       card.style.webkitPerspective = '1000px';
     });
     
+    measureCardPositions();
     setupLenis();
     updateCardTransforms();
     
+    const handleResize = () => {
+      measureCardPositions();
+      updateCardTransforms();
+    };
+    window.addEventListener('resize', handleResize);
+
     return () => {
+      window.removeEventListener('resize', handleResize);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
@@ -297,7 +310,8 @@ const ScrollStack = ({
     useWindowScroll,
     onStackComplete,
     setupLenis,
-    updateCardTransforms
+    updateCardTransforms,
+    measureCardPositions
   ]);
 
   return (
