@@ -9,6 +9,7 @@ import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import { CheckCircle2, ShieldCheck, Zap, Clock } from "lucide-react";
 import { useNavigate } from "react-router";
 import BlurText from "@/components/BlurText";
+import ScrollFloat from "@/components/ScrollFloat";
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -149,7 +150,17 @@ export default function Home() {
       {/* Why Choose Us - ScrollStack Section */}
       <section className="py-10 bg-muted/20">
         <div className="container mx-auto max-w-6xl px-4 mb-10 text-center">
-          <h2 className="text-4xl font-bold tracking-tight mb-4">Why Choose NSB TELECOM?</h2>
+          <ScrollFloat
+            animationDuration={1}
+            ease='back.inOut(2)'
+            scrollStart='center bottom+=50%'
+            scrollEnd='bottom bottom-=40%'
+            stagger={0.03}
+            containerClassName="mb-4"
+            textClassName="text-4xl font-bold tracking-tight text-foreground"
+          >
+            Why Choose NSB TELECOM?
+          </ScrollFloat>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             We bring expertise, innovation, and reliability to every project.
           </p>
