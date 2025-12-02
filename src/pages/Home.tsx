@@ -4,12 +4,15 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router";
-import { ArrowRight, Wrench, Network, Camera, Server, TrendingUp, Users, Globe, Award, Building2 } from "lucide-react";
+import { ArrowRight, Wrench, Network, Camera, Server, TrendingUp, Users, Globe, Award, Building2, Home as HomeIcon, Briefcase, ShoppingBag, Info, Mail } from "lucide-react";
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import { CheckCircle2, ShieldCheck, Zap, Clock } from "lucide-react";
+import Dock from "@/components/Dock";
+import { useNavigate } from "react-router";
 
 export default function Home() {
   const { scrollY } = useScroll();
+  const navigate = useNavigate();
   const heroY = useTransform(scrollY, [0, 500], [0, 150]);
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3]);
 
@@ -58,9 +61,19 @@ export default function Home() {
     { name: "DGGI", fullName: "Directorate General of GST Intelligence", logo: "https://harmless-tapir-303.convex.cloud/api/storage/bf95f9fc-ac6f-43e0-88d4-37ffbe92c723" },
   ];
 
+  const dockItems = [
+    { icon: <HomeIcon size={24} />, label: 'Home', onClick: () => navigate('/') },
+    { icon: <Info size={24} />, label: 'About', onClick: () => navigate('/about') },
+    { icon: <Briefcase size={24} />, label: 'Services', onClick: () => navigate('/services') },
+    { icon: <ShoppingBag size={24} />, label: 'Products', onClick: () => navigate('/products') },
+    { icon: <Mail size={24} />, label: 'Contact', onClick: () => navigate('/contact') },
+  ];
+
   return (
     <div className="min-h-screen">
       <Navbar />
+      
+      <Dock items={dockItems} panelHeight={68} baseItemSize={50} magnification={70} />
 
       {/* Hero Section with Parallax Effect */}
       <section className="pt-32 pb-20 px-4 relative overflow-hidden">
