@@ -5,7 +5,6 @@ import { useRef, useState, useEffect, memo } from 'react';
 import { Canvas, createPortal, useFrame, useThree } from '@react-three/fiber';
 import {
   useFBO,
-  useGLTF,
   useScroll,
   Image,
   Scroll,
