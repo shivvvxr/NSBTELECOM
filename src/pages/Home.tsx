@@ -13,7 +13,6 @@ import ScrollFloat from "@/components/ScrollFloat";
 import PillNav from "@/components/PillNav";
 import { useLocation } from "react-router";
 import MagicBento from "@/components/MagicBento";
-import Orb from "@/components/Orb";
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -242,34 +241,6 @@ export default function Home() {
               </div>
             </ScrollStackItem>
           </ScrollStack>
-        </div>
-      </section>
-
-      {/* Orb Section */}
-      <section className="py-20 px-4 bg-[#030014] text-white overflow-hidden relative min-h-[600px] flex items-center justify-center">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-[#030014] to-[#030014] pointer-events-none" />
-        <div className="container mx-auto flex flex-col items-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold tracking-tight mb-4 text-white">Global Connectivity</h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              Powering the future of digital infrastructure
-            </p>
-          </motion.div>
-          
-          <div style={{ width: '100%', height: '600px', position: 'relative' }}>
-            <Orb 
-              hoverIntensity={0.5} 
-              rotateOnHover={true} 
-              hue={0} 
-              forceHoverState={false} 
-            />
-          </div>
         </div>
       </section>
 
