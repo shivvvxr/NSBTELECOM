@@ -143,7 +143,7 @@ export default function Home() {
           </p>
         </div>
         
-        <div className="h-[800px] w-full relative">
+        <div className="w-full relative">
           <ScrollStack 
             itemDistance={50} 
             itemScale={0.05} 
@@ -152,6 +152,7 @@ export default function Home() {
             scaleEndPosition="5%"
             blurAmount={2}
             rotationAmount={2}
+            useWindowScroll={true}
           >
             <ScrollStackItem>
               <div className="flex flex-col items-center text-center h-full justify-center gap-6">

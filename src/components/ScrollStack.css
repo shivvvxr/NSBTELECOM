@@ -12,6 +12,13 @@
   will-change: scroll-position;
 }
 
+/* When using window scroll, disable the container's own scroll behavior */
+.scroll-stack-scroller.scroll-stack-window {
+  height: auto;
+  overflow-y: visible;
+  overscroll-behavior: auto;
+}
+
 .scroll-stack-inner {
   padding: 10vh 2rem 20vh;
   min-height: 100vh;

@@ -95,9 +95,8 @@ const ScrollStack = ({
     const stackPositionPx = parsePercentage(stackPosition, containerHeight);
     const scaleEndPositionPx = parsePercentage(scaleEndPosition, containerHeight);
     
-    const endElement = useWindowScroll
-      ? document.querySelector('.scroll-stack-end') as HTMLElement
-      : scrollerRef.current?.querySelector('.scroll-stack-end') as HTMLElement;
+    // Always scope to the current component instance to avoid conflicts
+    const endElement = scrollerRef.current?.querySelector('.scroll-stack-end') as HTMLElement;
       
     const endElementTop = endElement ? getElementOffset(endElement) : 0;
 
@@ -302,7 +301,10 @@ const ScrollStack = ({
   ]);
 
   return (
-    <div className={`scroll-stack-scroller ${className}`.trim()} ref={scrollerRef}>
+    <div 
+      className={`scroll-stack-scroller ${useWindowScroll ? 'scroll-stack-window' : ''} ${className}`.trim()} 
+      ref={scrollerRef}
+    >
       <div className="scroll-stack-inner">
         {children}
         {/* Spacer so the last pin can release cleanly */}
