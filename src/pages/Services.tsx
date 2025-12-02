@@ -138,7 +138,7 @@ export default function Services() {
       {/* Parallax Hero Section */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden min-h-[50vh] flex flex-col justify-center items-center">
         <motion.div 
-            style={{ y: heroY, opacity: 0.15 }}
+            style={{ y: heroY, opacity: 0.4 }}
             className="absolute inset-0 z-0"
         >
             <img 
@@ -146,7 +146,7 @@ export default function Services() {
                 alt="Services Background" 
                 className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/50 to-background" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background" />
         </motion.div>
         
         <div className="container mx-auto max-w-6xl relative z-10 text-center">
