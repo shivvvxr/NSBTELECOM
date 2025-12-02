@@ -16,7 +16,6 @@ import "./index.css";
 import Home from "./pages/Home.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import "./types/global.d.ts";
-import SplashCursor from "@/components/SplashCursor";
 import SmoothScroll from "@/components/SmoothScroll";
 import LoadingScreen from "@/components/LoadingScreen";
 import { AnimatePresence, motion } from "framer-motion";
@@ -65,7 +64,6 @@ function App() {
               >
                 <BrowserRouter>
                   <SmoothScroll>
-                    <SplashCursor />
                     <VlyToolbar />
                     <RouteSyncer />
                     <Routes>
