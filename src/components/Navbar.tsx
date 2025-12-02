@@ -63,9 +63,9 @@ export default function Navbar() {
   ];
 
   const socialItems = [
-    { label: 'LinkedIn', link: '#' },
-    { label: 'Twitter', link: '#' },
-    { label: 'Facebook', link: '#' }
+    { label: 'LinkedIn', link: 'https://linkedin.com' },
+    { label: 'Twitter', link: 'https://twitter.com' },
+    { label: 'Instagram', link: 'https://instagram.com' }
   ];
 
   return (
@@ -237,14 +237,15 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden">
-            <div className="fixed top-0 right-0 h-screen w-full pointer-events-none z-50">
+          <div className="md:hidden fixed top-0 right-0 h-16 flex items-center pr-4 z-[60]">
+            <div className="w-[100px] h-[60px] relative">
               <StaggeredMenu
                 items={menuItems}
                 socialItems={socialItems}
                 logoUrl="https://harmless-tapir-303.convex.cloud/api/storage/b770cec3-3a0c-4c9c-b9e5-d0b64ff562c1"
                 menuButtonColor="#000"
                 openMenuButtonColor="#000"
+                colors={['#e0f2fe', '#dcfce7', '#f3e8ff']}
                 accentColor="#0066CC"
               />
             </div>

@@ -1,14 +1,15 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { Link } from 'react-router';
 import './StaggeredMenu.css';
 
-export interface MenuItem {
+interface MenuItem {
   label: string;
-  ariaLabel?: string;
   link: string;
+  ariaLabel?: string;
 }
 
-export interface SocialItem {
+interface SocialItem {
   label: string;
   link: string;
 }
@@ -32,7 +33,7 @@ interface StaggeredMenuProps {
   onMenuClose?: () => void;
 }
 
-export const StaggeredMenu = ({
+export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   position = 'right',
   colors = ['#B19EEF', '#5227FF'],
   items = [],
@@ -49,17 +50,17 @@ export const StaggeredMenu = ({
   closeOnClickAway = true,
   onMenuOpen,
   onMenuClose
-}: StaggeredMenuProps) => {
+}) => {
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
   const panelRef = useRef<HTMLElement>(null);
   const preLayersRef = useRef<HTMLDivElement>(null);
   const preLayerElsRef = useRef<HTMLElement[]>([]);
-  const plusHRef = useRef<HTMLSpanElement>(null);
-  const plusVRef = useRef<HTMLSpanElement>(null);
-  const iconRef = useRef<HTMLSpanElement>(null);
-  const textInnerRef = useRef<HTMLSpanElement>(null);
-  const textWrapRef = useRef<HTMLSpanElement>(null);
+  const plusHRef = useRef(null);
+  const plusVRef = useRef(null);
+  const iconRef = useRef(null);
+  const textInnerRef = useRef(null);
+  const textWrapRef = useRef(null);
   const [textLines, setTextLines] = useState(['Menu', 'Close']);
   const openTlRef = useRef<gsap.core.Timeline | null>(null);
   const closeTweenRef = useRef<gsap.core.Tween | null>(null);
@@ -218,7 +219,7 @@ export const StaggeredMenu = ({
     const panel = panelRef.current;
     const layers = preLayerElsRef.current;
     if (!panel) return;
-    const all = [...(layers || []), panel];
+    const all = [...layers, panel];
     closeTweenRef.current?.kill();
     const offscreen = position === 'left' ? -100 : 100;
     closeTweenRef.current = gsap.to(all, {
@@ -413,9 +414,15 @@ export const StaggeredMenu = ({
             {items && items.length ? (
               items.map((it, idx) => (
                 <li className="sm-panel-itemWrap" key={it.label + idx}>
-                  <a className="sm-panel-item" href={it.link} aria-label={it.ariaLabel} data-index={idx + 1}>
+                  <Link 
+                    className="sm-panel-item" 
+                    to={it.link} 
+                    aria-label={it.ariaLabel} 
+                    data-index={idx + 1}
+                    onClick={closeMenu}
+                  >
                     <span className="sm-panel-itemLabel">{it.label}</span>
-                  </a>
+                  </Link>
                 </li>
               ))
             ) : (
