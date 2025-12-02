@@ -71,6 +71,22 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   const busyRef = useRef(false);
   const itemEntranceTweenRef = useRef<gsap.core.Tween | null>(null);
 
+  // Accessibility: Focus management
+  React.useEffect(() => {
+    if (open) {
+      // Small delay to allow animation to start/render
+      setTimeout(() => {
+        const firstItem = panelRef.current?.querySelector('a, button') as HTMLElement;
+        if (firstItem) firstItem.focus();
+      }, 100);
+    } else {
+      // Return focus to toggle button when closed
+      if (toggleBtnRef.current && !openRef.current) {
+        toggleBtnRef.current.focus();
+      }
+    }
+  }, [open]);
+
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const panel = panelRef.current;
@@ -351,22 +367,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [open, closeMenu]);
-
-  // Accessibility: Focus management
-  React.useEffect(() => {
-    if (open) {
-      // Small delay to allow animation to start/render
-      setTimeout(() => {
-        const firstItem = panelRef.current?.querySelector('a, button') as HTMLElement;
-        if (firstItem) firstItem.focus();
-      }, 100);
-    } else {
-      // Return focus to toggle button when closed
-      if (toggleBtnRef.current && !openRef.current) {
-        toggleBtnRef.current.focus();
-      }
-    }
-  }, [open]);
 
   React.useEffect(() => {
     if (!closeOnClickAway || !open) return;
