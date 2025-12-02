@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Wrench, Network, Layers, Users, Car, Camera, Headphones, Server } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import BlurText from "@/components/BlurText";
+import GlareHover from "@/components/GlareHover";
 
 export default function Services() {
   const { scrollY } = useScroll();
@@ -191,25 +192,27 @@ export default function Services() {
                 variants={itemVariants}
                 className="scroll-mt-28"
               >
-                <Card className="h-full border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 glass-card">
-                  <CardHeader>
-                    <div className="p-3 w-fit rounded-xl bg-primary/10 mb-4">
-                      <service.icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-2xl">{service.title}</CardTitle>
-                    <CardDescription className="text-base">{service.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                          <div className="h-1.5 w-1.5 rounded-full bg-primary mr-3" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
+                <GlareHover borderRadius="0.75rem">
+                  <Card className="h-full border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 glass-card">
+                    <CardHeader>
+                      <div className="p-3 w-fit rounded-xl bg-primary/10 mb-4">
+                        <service.icon className="h-8 w-8 text-primary" />
+                      </div>
+                      <CardTitle className="text-2xl">{service.title}</CardTitle>
+                      <CardDescription className="text-base">{service.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-3">
+                        {service.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center text-sm text-muted-foreground">
+                            <div className="h-1.5 w-1.5 rounded-full bg-primary mr-3" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </GlareHover>
               </motion.div>
             ))}
           </motion.div>

@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Laptop, Monitor, Server, Cpu, Printer, Camera, Presentation, Battery, Network } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import GlareHover from "@/components/GlareHover";
 
 export default function Products() {
   const products = [
@@ -91,13 +92,15 @@ export default function Products() {
                 viewport={{ once: true }}
                 className="scroll-mt-24"
               >
-                <Card className="h-full border hover:shadow-lg transition-shadow text-center">
-                  <CardHeader>
-                    <product.icon className="h-16 w-16 text-primary mx-auto mb-4" />
-                    <CardTitle className="text-xl">{product.title}</CardTitle>
-                    <CardDescription>{product.description}</CardDescription>
-                  </CardHeader>
-                </Card>
+                <GlareHover borderRadius="0.75rem">
+                  <Card className="h-full border hover:shadow-lg transition-shadow text-center">
+                    <CardHeader>
+                      <product.icon className="h-16 w-16 text-primary mx-auto mb-4" />
+                      <CardTitle className="text-xl">{product.title}</CardTitle>
+                      <CardDescription>{product.description}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </GlareHover>
               </motion.div>
             ))}
           </div>
