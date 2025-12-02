@@ -1,10 +1,15 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Wrench, Network, Layers, Users, Car, Camera, Headphones, Server } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import BlurText from "@/components/BlurText";
 
 export default function Services() {
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3]);
+
   const services = [
     {
       id: "it-amc",
@@ -104,43 +109,98 @@ export default function Services() {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navbar />
 
-      <div className="pt-24 pb-20 px-4">
-        <div className="container mx-auto max-w-6xl">
+      {/* Parallax Hero Section */}
+      <section className="relative pt-32 pb-20 px-4 overflow-hidden min-h-[50vh] flex flex-col justify-center items-center">
+        <motion.div 
+            style={{ y: heroY, opacity: 0.15 }}
+            className="absolute inset-0 z-0"
+        >
+            <img 
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
+                alt="Services Background" 
+                className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/50 to-background" />
+        </motion.div>
+        
+        <div className="container mx-auto max-w-6xl relative z-10 text-center">
           <motion.div
+            style={{ opacity: heroOpacity }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl font-bold tracking-tight mb-6">Our Services</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <BlurText
+                text="Our Services"
+                className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-foreground"
+                delay={100}
+                animateBy="words"
+                direction="top"
+            />
+            <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="text-xl text-muted-foreground max-w-3xl mx-auto"
+            >
               Comprehensive IT solutions and services tailored to meet your business needs
-            </p>
+            </motion.p>
           </motion.div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 gap-8">
+      <div className="pb-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <motion.div 
+            className="grid md:grid-cols-2 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {services.map((service, index) => (
               <motion.div
                 key={index}
                 id={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="scroll-mt-24"
+                variants={itemVariants}
+                className="scroll-mt-28"
               >
-                <Card className="h-full border hover:shadow-lg transition-shadow">
+                <Card className="h-full border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 glass-card">
                   <CardHeader>
-                    <service.icon className="h-12 w-12 text-primary mb-4" />
+                    <div className="p-3 w-fit rounded-xl bg-primary/10 mb-4">
+                      <service.icon className="h-8 w-8 text-primary" />
+                    </div>
                     <CardTitle className="text-2xl">{service.title}</CardTitle>
                     <CardDescription className="text-base">{service.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <ul className="space-y-2">
+                    <ul className="space-y-3">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center text-sm text-muted-foreground">
                           <div className="h-1.5 w-1.5 rounded-full bg-primary mr-3" />
@@ -152,7 +212,7 @@ export default function Services() {
                 </Card>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
