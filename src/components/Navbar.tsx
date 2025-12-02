@@ -14,6 +14,7 @@ import { Link, useLocation } from "react-router";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import StaggeredMenu from "./StaggeredMenu";
 
 export default function Navbar() {
   const location = useLocation();
@@ -52,6 +53,20 @@ export default function Navbar() {
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(productsSearch.toLowerCase())
   );
+
+  const menuItems = [
+    { label: 'Home', link: '/' },
+    { label: 'About', link: '/about' },
+    { label: 'Services', link: '/services' },
+    { label: 'Products', link: '/products' },
+    { label: 'Contact', link: '/contact' }
+  ];
+
+  const socialItems = [
+    { label: 'LinkedIn', link: '#' },
+    { label: 'Twitter', link: '#' },
+    { label: 'Facebook', link: '#' }
+  ];
 
   return (
     <motion.nav
@@ -222,62 +237,18 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Navigation */}
-          <Sheet>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" aria-label="Open mobile menu">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" aria-label="Mobile navigation menu">
-              <div className="flex flex-col space-y-4 mt-8">
-                <Link to="/">
-                  <Button
-                    variant={location.pathname === "/" ? "secondary" : "ghost"}
-                    className="w-full justify-start"
-                    aria-current={location.pathname === "/" ? "page" : undefined}
-                  >
-                    Home
-                  </Button>
-                </Link>
-                <Link to="/about">
-                  <Button
-                    variant={location.pathname === "/about" ? "secondary" : "ghost"}
-                    className="w-full justify-start"
-                    aria-current={location.pathname === "/about" ? "page" : undefined}
-                  >
-                    About
-                  </Button>
-                </Link>
-                <Link to="/services">
-                  <Button
-                    variant={location.pathname === "/services" ? "secondary" : "ghost"}
-                    className="w-full justify-start"
-                    aria-current={location.pathname === "/services" ? "page" : undefined}
-                  >
-                    Services
-                  </Button>
-                </Link>
-                <Link to="/products">
-                  <Button
-                    variant={location.pathname === "/products" ? "secondary" : "ghost"}
-                    className="w-full justify-start"
-                    aria-current={location.pathname === "/products" ? "page" : undefined}
-                  >
-                    Products
-                  </Button>
-                </Link>
-                <Link to="/contact">
-                  <Button
-                    variant={location.pathname === "/contact" ? "secondary" : "ghost"}
-                    className="w-full justify-start"
-                    aria-current={location.pathname === "/contact" ? "page" : undefined}
-                  >
-                    Contact
-                  </Button>
-                </Link>
-              </div>
-            </SheetContent>
-          </Sheet>
+          <div className="md:hidden">
+            <div className="fixed top-0 right-0 h-screen w-full pointer-events-none z-50">
+              <StaggeredMenu
+                items={menuItems}
+                socialItems={socialItems}
+                logoUrl="https://harmless-tapir-303.convex.cloud/api/storage/b770cec3-3a0c-4c9c-b9e5-d0b64ff562c1"
+                menuButtonColor="#000"
+                openMenuButtonColor="#000"
+                accentColor="#0066CC"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </motion.nav>
