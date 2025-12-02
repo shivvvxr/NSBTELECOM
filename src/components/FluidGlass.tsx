@@ -46,15 +46,13 @@ export default function FluidGlass({ mode = 'lens', lensProps = {}, barProps = {
 
 const ModeWrapper = memo(function ModeWrapper({
   children,
-  glb,
-  geometryKey,
+  geometryType = 'box',
   lockToBottom = false,
   followPointer = true,
   modeProps = {},
   ...props
 }: any) {
   const ref = useRef<any>();
-  const { nodes } = useGLTF(glb) as any;
   const buffer = useFBO();
   const { viewport: vp } = useThree();
   const [scene] = useState(() => new THREE.Scene());
@@ -79,14 +77,6 @@ const ModeWrapper = memo(function ModeWrapper({
   const pointerLiftValue = pointerLift ?? (lockToBottom ? 0.1 : 0);
   const interactiveRotationValue = interactiveRotation ?? 0.2;
   const rotationSpringValue = rotationSpring ?? 0.18;
-
-  useEffect(() => {
-    if (nodes && nodes[geometryKey]) {
-      const geo = nodes[geometryKey].geometry;
-      geo.computeBoundingBox();
-      geoWidthRef.current = geo.boundingBox.max.x - geo.boundingBox.min.x || 1;
-    }
-  }, [nodes, geometryKey]);
 
   useFrame((state, delta) => {
     const { gl, viewport, pointer, camera } = state;
@@ -127,7 +117,12 @@ const ModeWrapper = memo(function ModeWrapper({
         <planeGeometry />
         <meshBasicMaterial map={buffer.texture} transparent />
       </mesh>
-      <mesh ref={ref} scale={scale ?? 0.15} rotation={baseRotationValue} geometry={nodes?.[geometryKey]?.geometry} {...props}>
+      <mesh ref={ref} scale={scale ?? 0.15} rotation={baseRotationValue} {...props}>
+        {geometryType === 'cylinder' ? (
+          <cylinderGeometry args={[1, 1, 2, 32]} />
+        ) : (
+          <boxGeometry args={[1, 1, 1]} />
+        )}
         <MeshTransmissionMaterial
           buffer={buffer.texture}
           ior={ior ?? 1.15}
@@ -142,11 +137,11 @@ const ModeWrapper = memo(function ModeWrapper({
 });
 
 function Lens({ modeProps, ...p }: any) {
-  return <ModeWrapper glb="/assets/3d/lens.glb" geometryKey="Cylinder" followPointer modeProps={modeProps} {...p} />;
+  return <ModeWrapper geometryType="cylinder" followPointer modeProps={modeProps} {...p} />;
 }
 
 function Cube({ modeProps, ...p }: any) {
-  return <ModeWrapper glb="/assets/3d/cube.glb" geometryKey="Cube" followPointer modeProps={modeProps} {...p} />;
+  return <ModeWrapper geometryType="box" followPointer modeProps={modeProps} {...p} />;
 }
 
 function Bar({ modeProps = {}, ...p }: any) {
@@ -161,8 +156,7 @@ function Bar({ modeProps = {}, ...p }: any) {
   };
   return (
     <ModeWrapper
-      glb="/assets/3d/bar.glb"
-      geometryKey="Cube"
+      geometryType="box"
       lockToBottom
       followPointer={false}
       modeProps={{ ...defaultMat, ...modeProps }}
