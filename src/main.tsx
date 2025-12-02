@@ -16,6 +16,7 @@ import "./index.css";
 import Home from "./pages/Home.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import "./types/global.d.ts";
+import SplashCursor from "@/components/SplashCursor";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
@@ -52,6 +53,7 @@ function RouteSyncer() {
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <SplashCursor />
     <VlyToolbar />
     <InstrumentationProvider>
       <ConvexAuthProvider client={convex}>
