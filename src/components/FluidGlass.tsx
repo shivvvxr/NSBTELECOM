@@ -61,6 +61,26 @@ const ModeWrapper = memo(function ModeWrapper({
   const [scene] = useState(() => new THREE.Scene());
   const geoWidthRef = useRef(1);
 
+  const {
+    scale,
+    ior,
+    thickness,
+    anisotropy,
+    chromaticAberration,
+    pointerDrift,
+    pointerLift,
+    interactiveRotation,
+    baseRotation,
+    rotationSpring,
+    ...extraMat
+  } = modeProps;
+
+  const baseRotationValue = baseRotation ?? [Math.PI / 2, 0, 0];
+  const pointerDriftValue = pointerDrift ?? (followPointer ? 0.1 : 0.25);
+  const pointerLiftValue = pointerLift ?? (lockToBottom ? 0.1 : 0);
+  const interactiveRotationValue = interactiveRotation ?? 0.2;
+  const rotationSpringValue = rotationSpring ?? 0.18;
+
   useEffect(() => {
     if (nodes && nodes[geometryKey]) {
       const geo = nodes[geometryKey].geometry;
@@ -72,24 +92,34 @@ const ModeWrapper = memo(function ModeWrapper({
   useFrame((state, delta) => {
     const { gl, viewport, pointer, camera } = state;
     const v = viewport.getCurrentViewport(camera, [0, 0, 15]);
-    const destX = followPointer ? (pointer.x * v.width) / 2 : 0;
-    const destY = lockToBottom ? -v.height / 2 + 0.2 : followPointer ? (pointer.y * v.height) / 2 : 0;
+    const baseX = followPointer ? (pointer.x * v.width) / 2 : 0;
+    const baseY = lockToBottom ? -v.height / 2 + 0.2 : followPointer ? (pointer.y * v.height) / 2 : 0;
+    const driftX = pointer.x * v.width * pointerDriftValue * 0.25;
+    const driftY = pointer.y * v.height * pointerDriftValue * (lockToBottom ? 0.12 : 0.25);
+    const destX = baseX + driftX;
+    const destY = baseY + driftY + pointerLiftValue;
+
     if (ref.current) {
       easing.damp3(ref.current.position, [destX, destY, 15], 0.15, delta);
-      if (modeProps.scale == null) {
+      if (scale == null) {
         const maxWorld = v.width * 0.9;
         const desired = maxWorld / geoWidthRef.current;
         ref.current.scale.setScalar(Math.min(0.15, desired));
+      }
+      if (interactiveRotationValue > 0) {
+        const targetRotation = [
+          baseRotationValue[0] + pointer.y * interactiveRotationValue * (lockToBottom ? -1 : 1),
+          baseRotationValue[1] + pointer.x * interactiveRotationValue,
+          baseRotationValue[2],
+        ];
+        easing.dampE(ref.current.rotation, targetRotation, rotationSpringValue, delta);
       }
     }
     gl.setRenderTarget(buffer);
     gl.render(scene, camera);
     gl.setRenderTarget(null);
-    // Background Color
-    gl.setClearColor(0x5227ff, 0); // Transparent background
+    gl.setClearColor(0x5227ff, 0);
   });
-
-  const { scale, ior, thickness, anisotropy, chromaticAberration, ...extraMat } = modeProps;
 
   return (
     <>
@@ -98,7 +128,7 @@ const ModeWrapper = memo(function ModeWrapper({
         <planeGeometry />
         <meshBasicMaterial map={buffer.texture} transparent />
       </mesh>
-      <mesh ref={ref} scale={scale ?? 0.15} rotation-x={Math.PI / 2} geometry={nodes?.[geometryKey]?.geometry} {...props}>
+      <mesh ref={ref} scale={scale ?? 0.15} rotation={baseRotationValue} geometry={nodes?.[geometryKey]?.geometry} {...props}>
         <MeshTransmissionMaterial
           buffer={buffer.texture}
           ior={ior ?? 1.15}
@@ -152,6 +182,7 @@ function NavItems({ items }: any) {
   };
 
   const getDevice = () => {
+    if (typeof window === 'undefined') return 'desktop';
     const w = window.innerWidth;
     return w <= DEVICE.mobile.max ? 'mobile' : w <= DEVICE.tablet.max ? 'tablet' : 'desktop';
   };
@@ -177,38 +208,70 @@ function NavItems({ items }: any) {
   });
 
   const handleNavigate = (link: string) => {
-    if (!link) return;
+    if (!link || typeof window === 'undefined') return;
     link.startsWith('#') ? (window.location.hash = link) : (window.location.href = link);
   };
 
   return (
     <group ref={group} renderOrder={10}>
       {items.map(({ label, link }: any) => (
-        <Text
+        <NavText
           key={label}
+          label={label}
+          link={link}
           fontSize={fontSize}
-          color="white"
-          anchorX="center"
-          anchorY="middle"
-          // @ts-ignore
-          depthWrite={false}
-          outlineWidth={0}
-          outlineBlur="20%"
-          outlineColor="#000"
-          outlineOpacity={0.5}
-          depthTest={false}
-          renderOrder={10}
-          onClick={(e: any) => {
-            e.stopPropagation();
-            handleNavigate(link);
-          }}
-          onPointerOver={() => (document.body.style.cursor = 'pointer')}
-          onPointerOut={() => (document.body.style.cursor = 'auto')}
-        >
-          {label}
-        </Text>
+          onNavigate={handleNavigate}
+        />
       ))}
     </group>
+  );
+}
+
+function NavText({ label, link, fontSize, onNavigate }: any) {
+  const ref = useRef<any>();
+  const [hovered, setHovered] = useState(false);
+
+  useFrame((_, delta) => {
+    if (!ref.current) return;
+    const targetScale = hovered ? 1.2 : 1;
+    easing.damp3(ref.current.scale, [targetScale, targetScale, targetScale], 0.2, delta);
+  });
+
+  return (
+    <Text
+      ref={ref}
+      fontSize={fontSize}
+      color={hovered ? '#7AF3C5' : 'white'}
+      anchorX="center"
+      anchorY="middle"
+      // @ts-ignore
+      depthWrite={false}
+      outlineWidth={0}
+      outlineBlur="20%"
+      outlineColor="#000"
+      outlineOpacity={0.5}
+      depthTest={false}
+      renderOrder={10}
+      onClick={(e: any) => {
+        e.stopPropagation();
+        onNavigate(link);
+      }}
+      onPointerOver={(e: any) => {
+        e.stopPropagation();
+        if (typeof document !== 'undefined') document.body.style.cursor = 'pointer';
+        setHovered(true);
+      }}
+      onPointerOut={() => {
+        setHovered(false);
+        if (typeof document !== 'undefined') document.body.style.cursor = 'auto';
+      }}
+      onPointerMove={(e: any) => {
+        e.stopPropagation();
+        setHovered(true);
+      }}
+    >
+      {label}
+    </Text>
   );
 }
 
