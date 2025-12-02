@@ -10,10 +10,13 @@ import { CheckCircle2, ShieldCheck, Zap, Clock } from "lucide-react";
 import { useNavigate } from "react-router";
 import BlurText from "@/components/BlurText";
 import ScrollFloat from "@/components/ScrollFloat";
+import PillNav from "@/components/PillNav";
+import { useLocation } from "react-router";
 
 export default function Home() {
   const { scrollY } = useScroll();
   const navigate = useNavigate();
+  const location = useLocation();
   const heroY = useTransform(scrollY, [0, 500], [0, 150]);
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3]);
   const bgY = useTransform(scrollY, [0, 500], [0, 200]);
@@ -65,7 +68,22 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <PillNav 
+        logo="https://harmless-tapir-303.convex.cloud/api/storage/b770cec3-3a0c-4c9c-b9e5-d0b64ff562c1"
+        logoAlt="NSB TELECOM"
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'About', href: '/about' },
+          { label: 'Services', href: '/services' },
+          { label: 'Products', href: '/products' },
+          { label: 'Contact', href: '/contact' }
+        ]}
+        activeHref={location.pathname}
+        baseColor="#000000"
+        pillColor="#ffffff"
+        hoveredPillTextColor="#ffffff"
+        pillTextColor="#000000"
+      />
       
       {/* Hero Section with Parallax Effect */}
       <section className="pt-32 pb-20 px-4 relative overflow-hidden min-h-[80vh] flex flex-col justify-center">
