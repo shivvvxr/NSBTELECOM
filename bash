@@ -1,1 +1,1 @@
-pnpm add gsap
+pnpm add ogl
