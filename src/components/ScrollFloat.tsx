@@ -33,7 +33,26 @@ const ScrollFloat = ({
   const splitText = useMemo(() => {
     const text = typeof children === 'string' ? children : '';
     return text.split('').map((char, index) => (
-      <span className="char" key={index}>
+      <span 
+        className="char cursor-pointer inline-block" 
+        key={index}
+        onMouseEnter={(e) => {
+          gsap.to(e.currentTarget, { 
+            scale: 1.3, 
+            color: '#00A651', 
+            duration: 0.3, 
+            ease: 'back.out(1.7)' 
+          });
+        }}
+        onMouseLeave={(e) => {
+          gsap.to(e.currentTarget, { 
+            scale: 1, 
+            color: 'inherit', 
+            duration: 0.3, 
+            ease: 'power1.out' 
+          });
+        }}
+      >
         {char === ' ' ? '\u00A0' : char}
       </span>
     ));

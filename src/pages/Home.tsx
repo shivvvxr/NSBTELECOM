@@ -16,6 +16,7 @@ export default function Home() {
   const navigate = useNavigate();
   const heroY = useTransform(scrollY, [0, 500], [0, 150]);
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3]);
+  const bgY = useTransform(scrollY, [0, 500], [0, 200]);
 
   const services = [
     {
@@ -67,12 +68,23 @@ export default function Home() {
       <Navbar />
       
       {/* Hero Section with Parallax Effect */}
-      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
+      <section className="pt-32 pb-20 px-4 relative overflow-hidden min-h-[80vh] flex flex-col justify-center">
+        <motion.div 
+          style={{ y: bgY, opacity: 0.1 }}
+          className="absolute inset-0 z-0"
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
+            alt="Background" 
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+
         <motion.div 
           style={{ y: heroY, opacity: heroOpacity }}
-          className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-green-500/10 to-transparent pointer-events-none" 
+          className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-green-500/10 to-transparent pointer-events-none z-10" 
         />
-        <div className="container mx-auto max-w-6xl relative z-10">
+        <div className="container mx-auto max-w-6xl relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
