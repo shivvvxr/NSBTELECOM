@@ -253,17 +253,55 @@ export default function Navbar() {
 
           {/* Mobile Navigation */}
           <div className="md:hidden fixed top-0 right-0 h-16 flex items-center pr-4 z-[60]">
-            <div className="w-[100px] h-[60px] relative">
-              <StaggeredMenu
-                items={menuItems}
-                socialItems={socialLinks}
-                logoUrl="https://harmless-tapir-303.convex.cloud/api/storage/b770cec3-3a0c-4c9c-b9e5-d0b64ff562c1"
-                menuButtonColor="currentColor"
-                openMenuButtonColor="currentColor"
-                colors={['#0066CC', '#00A651', '#364176']}
-                accentColor="#0066CC"
-              />
-            </div>
+            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-foreground">
+                  <Menu className="h-7 w-7" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-full sm:w-[350px] bg-background/95 backdrop-blur-xl border-l border-border p-0">
+                <div className="flex flex-col h-full p-6">
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="flex items-center space-x-2">
+                      <img src="https://harmless-tapir-303.convex.cloud/api/storage/b770cec3-3a0c-4c9c-b9e5-d0b64ff562c1" alt="NSB TELECOM" className="h-8 w-auto" />
+                      <span className="text-lg font-bold tracking-tight">NSB TELECOM</span>
+                    </div>
+                  </div>
+                  
+                  <nav className="flex flex-col space-y-6">
+                    {menuItems.map((item, index) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="text-3xl font-bold tracking-tight text-foreground/80 hover:text-primary transition-colors flex items-center justify-between group"
+                      >
+                        <span>{item.label}</span>
+                        <ChevronRight className="h-6 w-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                      </Link>
+                    ))}
+                  </nav>
+
+                  <div className="mt-auto pt-8">
+                    <div className="flex space-x-6 justify-center">
+                      {socialLinks.map((social, index) => (
+                        <a
+                          key={index}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-primary transition-colors"
+                        >
+                          <social.icon className="h-6 w-6" />
+                          <span className="sr-only">{social.label}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>
