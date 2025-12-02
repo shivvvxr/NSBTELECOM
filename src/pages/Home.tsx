@@ -165,8 +165,8 @@ export default function Home() {
           <ScrollFloat
             animationDuration={1}
             ease='back.inOut(2)'
-            scrollStart='center bottom+=50%'
-            scrollEnd='bottom bottom-=40%'
+            scrollStart='top 85%'
+            scrollEnd='bottom 50%'
             stagger={0.03}
             containerClassName="mb-4"
             textClassName="text-4xl font-bold tracking-tight text-foreground"
