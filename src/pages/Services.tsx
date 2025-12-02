@@ -5,7 +5,6 @@ import { Wrench, Network, Layers, Users, Car, Camera, Headphones, Server } from 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import BlurText from "@/components/BlurText";
 import GlareHover from "@/components/GlareHover";
-import InfiniteMenu from "@/components/InfiniteMenu";
 
 export default function Services() {
   const { scrollY } = useScroll();
@@ -119,13 +118,6 @@ export default function Services() {
     },
   ];
 
-  const menuItems = services.map(service => ({
-    image: service.image,
-    link: `#${service.id}`,
-    title: service.title,
-    description: service.description
-  }));
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -190,11 +182,6 @@ export default function Services() {
             </motion.p>
           </motion.div>
         </div>
-      </section>
-
-      {/* Infinite Menu Section */}
-      <section className="h-[600px] w-full relative overflow-hidden bg-black">
-        <InfiniteMenu items={menuItems} />
       </section>
 
       <div className="pb-20 px-4 pt-20">

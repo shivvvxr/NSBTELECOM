@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Laptop, Monitor, Server, Cpu, Printer, Camera, Presentation, Battery, Network } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import GlareHover from "@/components/GlareHover";
-import InfiniteMenu from "@/components/InfiniteMenu";
 
 export default function Products() {
   const products = [
@@ -73,13 +72,6 @@ export default function Products() {
     },
   ];
 
-  const menuItems = products.map(product => ({
-    image: product.image,
-    link: `#${product.id}`,
-    title: product.title,
-    description: product.description
-  }));
-
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -97,10 +89,6 @@ export default function Products() {
               Quality IT hardware and equipment from trusted manufacturers
             </p>
           </motion.div>
-
-          <div className="h-[500px] w-full relative overflow-hidden bg-black rounded-xl mb-16">
-            <InfiniteMenu items={menuItems} />
-          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {products.map((product, index) => (
