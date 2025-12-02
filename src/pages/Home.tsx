@@ -68,22 +68,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <PillNav 
-        logo="https://harmless-tapir-303.convex.cloud/api/storage/b770cec3-3a0c-4c9c-b9e5-d0b64ff562c1"
-        logoAlt="NSB TELECOM"
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'About', href: '/about' },
-          { label: 'Services', href: '/services' },
-          { label: 'Products', href: '/products' },
-          { label: 'Contact', href: '/contact' }
-        ]}
-        activeHref={location.pathname}
-        baseColor="#000000"
-        pillColor="#ffffff"
-        hoveredPillTextColor="#ffffff"
-        pillTextColor="#000000"
-      />
+      <Navbar />
       
       {/* Hero Section with Parallax Effect */}
       <section className="pt-32 pb-20 px-4 relative overflow-hidden min-h-[80vh] flex flex-col justify-center">
