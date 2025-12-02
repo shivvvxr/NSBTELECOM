@@ -1,1 +1,1 @@
-pnpm add gl-matrix @types/gl-matrix
+rm src/pages/Home.tsx src/components/ScrollReveal.tsx src/components/ScrollReveal.css
