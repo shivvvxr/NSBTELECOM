@@ -159,7 +159,7 @@ export default function Services() {
           >
             <BlurText
                 text="Our Services"
-                className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-foreground"
+                className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-blue-600 dark:text-blue-500 justify-center text-center"
                 delay={100}
                 animateBy="words"
                 direction="top"
