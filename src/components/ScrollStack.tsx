@@ -199,25 +199,10 @@ const ScrollStack = ({
 
   const setupLenis = useCallback(() => {
     if (useWindowScroll) {
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        touchMultiplier: 2,
-        infinite: false,
-        wheelMultiplier: 1,
-        lerp: 0.1,
-        syncTouch: true,
-        syncTouchLerp: 0.075
-      });
-      lenis.on('scroll', handleScroll);
-      const raf = (time: number) => {
-        lenis.raf(time);
-        animationFrameRef.current = requestAnimationFrame(raf);
-      };
-      animationFrameRef.current = requestAnimationFrame(raf);
-      lenisRef.current = lenis;
-      return lenis;
+      // When using window scroll, we rely on the global SmoothScroll component
+      // We just need to listen to the scroll event to update transforms
+      window.addEventListener('scroll', handleScroll);
+      return null;
     } else {
       const scroller = scrollerRef.current;
       if (!scroller) return;
@@ -275,7 +260,7 @@ const ScrollStack = ({
     });
     
     measureCardPositions();
-    setupLenis();
+    const lenis = setupLenis();
     updateCardTransforms();
     
     const handleResize = () => {
@@ -286,11 +271,12 @@ const ScrollStack = ({
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
-      if (lenisRef.current) {
-        lenisRef.current.destroy();
+      if (lenis) {
+        lenis.destroy();
       }
       stackCompletedRef.current = false;
       cardsRef.current = [];
