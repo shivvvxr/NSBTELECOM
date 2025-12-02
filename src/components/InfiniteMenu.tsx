@@ -886,7 +886,10 @@ export default function InfiniteMenu({ items = [] }: { items?: MenuItem[] }) {
     if (activeItem.link.startsWith('http')) {
       window.open(activeItem.link, '_blank');
     } else {
-      console.log('Internal route:', activeItem.link);
+      const element = document.querySelector(activeItem.link);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
   

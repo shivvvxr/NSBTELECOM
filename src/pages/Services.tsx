@@ -5,6 +5,7 @@ import { Wrench, Network, Layers, Users, Car, Camera, Headphones, Server } from 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import BlurText from "@/components/BlurText";
 import GlareHover from "@/components/GlareHover";
+import InfiniteMenu from "@/components/InfiniteMenu";
 
 export default function Services() {
   const { scrollY } = useScroll();
@@ -23,6 +24,7 @@ export default function Services() {
         "Hardware Repairs",
         "Software Updates",
       ],
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop"
     },
     {
       id: "network-setup",
@@ -35,6 +37,7 @@ export default function Services() {
         "Network Security",
         "WiFi Solutions",
       ],
+      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1000&auto=format&fit=crop"
     },
     {
       id: "system-integration",
@@ -47,6 +50,7 @@ export default function Services() {
         "System Testing",
         "Migration Services",
       ],
+      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop"
     },
     {
       id: "manpower",
@@ -59,6 +63,7 @@ export default function Services() {
         "System Administrators",
         "Support Staff",
       ],
+      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1000&auto=format&fit=crop"
     },
     {
       id: "car-rental",
@@ -71,6 +76,7 @@ export default function Services() {
         "Corporate Packages",
         "Maintenance Included",
       ],
+      image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=1000&auto=format&fit=crop"
     },
     {
       id: "cctv",
@@ -83,6 +89,7 @@ export default function Services() {
         "Remote Monitoring",
         "24/7 Recording",
       ],
+      image: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=1000&auto=format&fit=crop"
     },
     {
       id: "maintenance-support",
@@ -95,6 +102,7 @@ export default function Services() {
         "Regular Check-ups",
         "Priority Response",
       ],
+      image: "https://images.unsplash.com/photo-1581092921461-eab62e97a782?q=80&w=1000&auto=format&fit=crop"
     },
     {
       id: "server-setup",
@@ -107,8 +115,16 @@ export default function Services() {
         "Cooling Solutions",
         "Power Management",
       ],
+      image: "https://images.unsplash.com/photo-1558494949-ef526b004297?q=80&w=1000&auto=format&fit=crop"
     },
   ];
+
+  const menuItems = services.map(service => ({
+    image: service.image,
+    link: `#${service.id}`,
+    title: service.title,
+    description: service.description
+  }));
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -176,7 +192,12 @@ export default function Services() {
         </div>
       </section>
 
-      <div className="pb-20 px-4">
+      {/* Infinite Menu Section */}
+      <section className="h-[600px] w-full relative overflow-hidden bg-black">
+        <InfiniteMenu items={menuItems} />
+      </section>
+
+      <div className="pb-20 px-4 pt-20">
         <div className="container mx-auto max-w-6xl">
           <motion.div 
             className="grid md:grid-cols-2 gap-8"
