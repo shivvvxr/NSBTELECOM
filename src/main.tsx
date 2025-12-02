@@ -43,23 +43,18 @@ function RouteSyncer() {
     return () => window.removeEventListener("message", handleMessage);
   }, []);
 
-  // Scroll to top on route change
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
   return null;
 }
 
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <SmoothScroll>
-      <SplashCursor />
-      <VlyToolbar />
-      <InstrumentationProvider>
-        <ConvexAuthProvider client={convex}>
-          <BrowserRouter>
+    <InstrumentationProvider>
+      <ConvexAuthProvider client={convex}>
+        <BrowserRouter>
+          <SmoothScroll>
+            <SplashCursor />
+            <VlyToolbar />
             <RouteSyncer />
             <Routes>
               <Route path="/" element={<Home />} />
@@ -71,10 +66,10 @@ createRoot(document.getElementById("root")!).render(
               <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
-          <Toaster />
-        </ConvexAuthProvider>
-      </InstrumentationProvider>
-    </SmoothScroll>
+          </SmoothScroll>
+        </BrowserRouter>
+        <Toaster />
+      </ConvexAuthProvider>
+    </InstrumentationProvider>
   </StrictMode>,
 );
