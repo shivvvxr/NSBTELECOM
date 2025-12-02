@@ -13,6 +13,7 @@ import ScrollFloat from "@/components/ScrollFloat";
 import PillNav from "@/components/PillNav";
 import { useLocation } from "react-router";
 import MagicBento from "@/components/MagicBento";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -121,9 +122,18 @@ export default function Home() {
                 direction="top"
               />
             </div>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              NSB TELECOM delivers cutting-edge IT infrastructure, system integration, and maintenance solutions that empower businesses to thrive in the digital age.
-            </p>
+            <div className="max-w-2xl mx-auto mb-8">
+              <ScrollReveal 
+                baseOpacity={0} 
+                enableBlur={true} 
+                baseRotation={5} 
+                blurStrength={10}
+                textClassName="text-xl text-muted-foreground leading-relaxed font-normal"
+                containerClassName="my-0"
+              >
+                NSB TELECOM delivers cutting-edge IT infrastructure, system integration, and maintenance solutions that empower businesses to thrive in the digital age.
+              </ScrollReveal>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/services">
                 <Button size="lg" className="text-base glass-hover shadow-lg">
@@ -177,9 +187,17 @@ export default function Home() {
           >
             Why Choose NSB TELECOM?
           </ScrollFloat>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We bring expertise, innovation, and reliability to every project.
-          </p>
+          <div className="max-w-2xl mx-auto">
+            <ScrollReveal 
+              baseOpacity={0} 
+              enableBlur={true} 
+              baseRotation={2} 
+              blurStrength={5}
+              textClassName="text-lg text-muted-foreground font-normal"
+            >
+              We bring expertise, innovation, and reliability to every project.
+            </ScrollReveal>
+          </div>
         </div>
         
         <div className="w-full relative">
@@ -255,9 +273,17 @@ export default function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold tracking-tight mb-4">Our Services</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive IT solutions tailored to your business needs
-            </p>
+            <div className="max-w-2xl mx-auto">
+              <ScrollReveal 
+                baseOpacity={0} 
+                enableBlur={true} 
+                baseRotation={2} 
+                blurStrength={5}
+                textClassName="text-lg text-muted-foreground font-normal"
+              >
+                Comprehensive IT solutions tailored to your business needs
+              </ScrollReveal>
+            </div>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -300,9 +326,17 @@ export default function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold tracking-tight mb-4">Trusted by Leading Organizations</h2>
-            <p className="text-lg text-muted-foreground">
-              Serving government and corporate clients across India
-            </p>
+            <div className="max-w-3xl mx-auto">
+              <ScrollReveal 
+                baseOpacity={0} 
+                enableBlur={true} 
+                baseRotation={2} 
+                blurStrength={5}
+                textClassName="text-lg text-muted-foreground font-normal"
+              >
+                Serving government and corporate clients across India
+              </ScrollReveal>
+            </div>
           </motion.div>
 
           <div className="relative overflow-hidden">
@@ -349,9 +383,17 @@ export default function Home() {
             <h2 className="text-4xl font-bold tracking-tight mb-4">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-lg mb-8 text-muted-foreground">
-              Let's discuss how NSB TELECOM can help you achieve your digital transformation goals.
-            </p>
+            <div className="mb-8">
+              <ScrollReveal 
+                baseOpacity={0} 
+                enableBlur={true} 
+                baseRotation={2} 
+                blurStrength={5}
+                textClassName="text-lg text-muted-foreground font-normal"
+              >
+                Let's discuss how NSB TELECOM can help you achieve your digital transformation goals.
+              </ScrollReveal>
+            </div>
             <Link to="/contact">
               <Button size="lg" className="text-base shadow-lg">
                 Get in Touch
