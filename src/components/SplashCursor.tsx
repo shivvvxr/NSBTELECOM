@@ -1,6 +1,7 @@
 import { Fluid } from '@whatisjery/react-fluid-distortion';
 import { EffectComposer } from '@react-three/postprocessing';
 import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
 
 export default function SplashCursor() {
   return (
@@ -16,18 +17,21 @@ export default function SplashCursor() {
         pointerEvents: 'none',
       }}
       eventSource={document.body}
+      gl={{ alpha: true, antialias: false }}
     >
-      <EffectComposer>
-        <Fluid
-          showBackground={false}
-          rainbow={true}
-          blend={5}
-          intensity={10}
-          distortion={2}
-          curl={10}
-          swirl={20}
-        />
-      </EffectComposer>
+      <Suspense fallback={null}>
+        <EffectComposer disableNormalPass multisampling={0}>
+          <Fluid
+            showBackground={false}
+            rainbow={true}
+            blend={5}
+            intensity={10}
+            distortion={2}
+            curl={10}
+            swirl={20}
+          />
+        </EffectComposer>
+      </Suspense>
     </Canvas>
   );
 }
