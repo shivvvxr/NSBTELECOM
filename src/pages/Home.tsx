@@ -13,9 +13,104 @@ import ScrollFloat from "@/components/ScrollFloat";
 import PillNav from "@/components/PillNav";
 import { useLocation } from "react-router";
 import MagicBento from "@/components/MagicBento";
-import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
+>>>>>>> REPLACE
+<<<<<<< SEARCH
+            <div className="max-w-2xl mx-auto mb-8">
+              <ScrollReveal 
+                baseOpacity={0} 
+                enableBlur={true} 
+                baseRotation={5} 
+                blurStrength={10}
+                textClassName="text-xl text-muted-foreground leading-relaxed font-normal"
+                containerClassName="my-0"
+              >
+                NSB TELECOM delivers cutting-edge IT infrastructure, system integration, and maintenance solutions that empower businesses to thrive in the digital age.
+              </ScrollReveal>
+            </div>
+=======
+            <div className="max-w-2xl mx-auto mb-8">
+              <p className="text-xl text-muted-foreground leading-relaxed font-normal">
+                NSB TELECOM delivers cutting-edge IT infrastructure, system integration, and maintenance solutions that empower businesses to thrive in the digital age.
+              </p>
+            </div>
+>>>>>>> REPLACE
+<<<<<<< SEARCH
+          <div className="max-w-2xl mx-auto">
+            <ScrollReveal 
+              baseOpacity={0} 
+              enableBlur={true} 
+              baseRotation={2} 
+              blurStrength={5}
+              textClassName="text-lg text-muted-foreground font-normal"
+            >
+              We bring expertise, innovation, and reliability to every project.
+            </ScrollReveal>
+          </div>
+=======
+          <div className="max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground font-normal">
+              We bring expertise, innovation, and reliability to every project.
+            </p>
+          </div>
+>>>>>>> REPLACE
+<<<<<<< SEARCH
+            <div className="max-w-2xl mx-auto">
+              <ScrollReveal 
+                baseOpacity={0} 
+                enableBlur={true} 
+                baseRotation={2} 
+                blurStrength={5}
+                textClassName="text-lg text-muted-foreground font-normal"
+              >
+                Comprehensive IT solutions tailored to your business needs
+              </ScrollReveal>
+            </div>
+=======
+            <div className="max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground font-normal">
+                Comprehensive IT solutions tailored to your business needs
+              </p>
+            </div>
+>>>>>>> REPLACE
+<<<<<<< SEARCH
+            <div className="max-w-3xl mx-auto">
+              <ScrollReveal 
+                baseOpacity={0} 
+                enableBlur={true} 
+                baseRotation={2} 
+                blurStrength={5}
+                textClassName="text-lg text-muted-foreground font-normal"
+              >
+                Serving government and corporate clients across India
+              </ScrollReveal>
+            </div>
+=======
+            <div className="max-w-3xl mx-auto">
+              <p className="text-lg text-muted-foreground font-normal">
+                Serving government and corporate clients across India
+              </p>
+            </div>
+>>>>>>> REPLACE
+<<<<<<< SEARCH
+            <div className="mb-8">
+              <ScrollReveal 
+                baseOpacity={0} 
+                enableBlur={true} 
+                baseRotation={2} 
+                blurStrength={5}
+                textClassName="text-lg text-muted-foreground font-normal"
+              >
+                Let's discuss how NSB TELECOM can help you achieve your digital transformation goals.
+              </ScrollReveal>
+            </div>
+=======
+            <div className="mb-8">
+              <p className="text-lg text-muted-foreground font-normal">
+                Let's discuss how NSB TELECOM can help you achieve your digital transformation goals.
+              </p>
+            </div>
   const { scrollY } = useScroll();
   const navigate = useNavigate();
   const location = useLocation();
