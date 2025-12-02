@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import FluidGlass from "@/components/FluidGlass";
 import {
   Sheet,
   SheetContent,
@@ -76,6 +77,11 @@ export default function Navbar() {
     { label: "CONTACT", path: "/contact" },
   ];
 
+  const fluidNavItems = menuItems.map((item) => ({
+    label: item.label,
+    link: item.path,
+  }));
+
   const socialLinks = [
     { label: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
     { label: "Twitter", href: "https://twitter.com", icon: Twitter },
@@ -88,11 +94,26 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b"
+      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b overflow-visible"
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="container mx-auto px-4">
+      <div className="pointer-events-none absolute inset-x-0 top-full hidden xl:flex justify-center translate-y-4">
+        <div className="h-[260px] w-full max-w-5xl">
+          <FluidGlass
+            mode="bar"
+            barProps={{
+              navItems: fluidNavItems,
+              color: "#ffffff",
+              attenuationColor: "#a5f3fc",
+              transmission: 1,
+              thickness: 6,
+              chromaticAberration: 0.15,
+            }}
+          />
+        </div>
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center space-x-2" aria-label="NSB TELECOM Home">
             <img src="https://harmless-tapir-303.convex.cloud/api/storage/b770cec3-3a0c-4c9c-b9e5-d0b64ff562c1" alt="NSB TELECOM Logo" className="h-10 w-auto" />
