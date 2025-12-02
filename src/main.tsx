@@ -9,7 +9,7 @@ import Industries from "@/pages/Industries.tsx";
 import Contact from "@/pages/Contact.tsx";
 import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { ConvexReactClient } from "convex/react";
-import { StrictMode, useEffect } from "react";
+import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import "./index.css";
@@ -18,10 +18,10 @@ import NotFound from "./pages/NotFound.tsx";
 import "./types/global.d.ts";
 import SplashCursor from "@/components/SplashCursor";
 import SmoothScroll from "@/components/SmoothScroll";
+import LoadingScreen from "@/components/LoadingScreen";
+import { AnimatePresence, motion } from "framer-motion";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
-
-
 
 function RouteSyncer() {
   const location = useLocation();
@@ -46,30 +46,48 @@ function RouteSyncer() {
   return null;
 }
 
+function App() {
+  const [isLoading, setIsLoading] = useState(true);
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <InstrumentationProvider>
-      <ConvexAuthProvider client={convex}>
-        <BrowserRouter>
-          <SmoothScroll>
-            <SplashCursor />
-            <VlyToolbar />
-            <RouteSyncer />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/industries" element={<Industries />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </SmoothScroll>
-        </BrowserRouter>
-        <Toaster />
-      </ConvexAuthProvider>
-    </InstrumentationProvider>
-  </StrictMode>,
-);
+  return (
+    <StrictMode>
+      <InstrumentationProvider>
+        <ConvexAuthProvider client={convex}>
+          <AnimatePresence mode="wait">
+            {isLoading ? (
+              <LoadingScreen key="loading" onComplete={() => setIsLoading(false)} />
+            ) : (
+              <motion.div 
+                key="app" 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ duration: 0.5 }}
+              >
+                <BrowserRouter>
+                  <SmoothScroll>
+                    <SplashCursor />
+                    <VlyToolbar />
+                    <RouteSyncer />
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/about" element={<About />} />
+                      <Route path="/services" element={<Services />} />
+                      <Route path="/products" element={<Products />} />
+                      <Route path="/industries" element={<Industries />} />
+                      <Route path="/contact" element={<Contact />} />
+                      <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} />
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </SmoothScroll>
+                </BrowserRouter>
+                <Toaster />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </ConvexAuthProvider>
+      </InstrumentationProvider>
+    </StrictMode>
+  );
+}
+
+createRoot(document.getElementById("root")!).render(<App />);
