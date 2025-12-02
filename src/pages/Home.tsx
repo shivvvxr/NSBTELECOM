@@ -91,14 +91,14 @@ export default function Home() {
             <div className="flex flex-col items-center mb-6">
               <BlurText
                 text="Connecting the Future"
-                className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-blue-600 via-green-600 to-blue-800 bg-clip-text text-transparent justify-center text-center"
+                className="text-5xl md:text-7xl font-bold tracking-tight text-blue-600 dark:text-blue-500 justify-center text-center"
                 delay={150}
                 animateBy="words"
                 direction="top"
               />
               <BlurText
                 text="of Technology"
-                className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-blue-600 via-green-600 to-blue-800 bg-clip-text text-transparent justify-center text-center"
+                className="text-5xl md:text-7xl font-bold tracking-tight text-green-600 dark:text-green-500 justify-center text-center"
                 delay={150}
                 animateBy="words"
                 direction="top"
