@@ -78,9 +78,9 @@ class Face {
 }
 
 class Vertex {
-  position: Float32Array;
-  normal: Float32Array;
-  uv: Float32Array;
+  position: any;
+  normal: any;
+  uv: any;
   constructor(x: number, y: number, z: number) {
     this.position = vec3.fromValues(x, y, z);
     this.normal = vec3.create();
@@ -390,18 +390,18 @@ class ArcballControl {
   canvas: HTMLCanvasElement;
   updateCallback: (deltaTime: number) => void;
   isPointerDown = false;
-  orientation = quat.create();
-  pointerRotation = quat.create();
+  orientation: any = quat.create();
+  pointerRotation: any = quat.create();
   rotationVelocity = 0;
-  rotationAxis = vec3.fromValues(1, 0, 0);
-  snapDirection = vec3.fromValues(0, 0, -1);
-  snapTargetDirection: Float32Array | null = null;
+  rotationAxis: any = vec3.fromValues(1, 0, 0);
+  snapDirection: any = vec3.fromValues(0, 0, -1);
+  snapTargetDirection: any = null;
   EPSILON = 0.1;
-  IDENTITY_QUAT = quat.create();
-  pointerPos = vec2.create();
-  previousPointerPos = vec2.create();
+  IDENTITY_QUAT: any = quat.create();
+  pointerPos: any = vec2.create();
+  previousPointerPos: any = vec2.create();
   _rotationVelocity = 0;
-  _combinedQuat = quat.create();
+  _combinedQuat: any = quat.create();
 
   constructor(canvas: HTMLCanvasElement, updateCallback: (deltaTime: number) => void) {
     this.canvas = canvas;
@@ -479,7 +479,7 @@ class ArcballControl {
     this.rotationVelocity = this._rotationVelocity / timeScale;
     this.updateCallback(deltaTime);
   }
-  quatFromVectors(a: Float32Array, b: Float32Array, out: Float32Array, angleFactor = 1) {
+  quatFromVectors(a: any, b: any, out: any, angleFactor = 1) {
     const axis = vec3.cross(vec3.create(), a, b);
     vec3.normalize(axis, axis);
     const d = Math.max(-1, Math.min(1, vec3.dot(a, b)));
@@ -487,7 +487,7 @@ class ArcballControl {
     quat.setAxisAngle(out, axis, angle);
     return { q: out, axis, angle };
   }
-  #project(pos: Float32Array) {
+  #project(pos: any) {
     const r = 2;
     const w = this.canvas.clientWidth;
     const h = this.canvas.clientHeight;
@@ -525,7 +525,7 @@ class InfiniteGridMenu {
   discBuffers: any = null;
   discVAO: WebGLVertexArrayObject | null = null;
   icoGeo: IcosahedronGeometry | null = null;
-  instancePositions: Float32Array[] = [];
+  instancePositions: any[] = [];
   DISC_INSTANCE_COUNT = 0;
   worldMatrix = mat4.create();
   tex: WebGLTexture | null = null;
@@ -549,8 +549,8 @@ class InfiniteGridMenu {
     far: 40,
     fov: Math.PI / 4,
     aspect: 1,
-    position: vec3.fromValues(0, 0, 3),
-    up: vec3.fromValues(0, 1, 0),
+    position: vec3.fromValues(0, 0, 3) as any,
+    up: vec3.fromValues(0, 1, 0) as any,
     matrices: {
       view: mat4.create(),
       projection: mat4.create(),
