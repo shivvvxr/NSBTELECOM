@@ -1,64 +1,112 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
-import { ArrowRight, Wrench, Network, Camera, Server } from "lucide-react";
+import { ArrowRight, Server, ShieldCheck, Activity, Users } from "lucide-react";
+import GlareHover from "@/components/GlareHover";
 
 const services = [
   {
-    icon: Wrench,
-    title: "IT AMC & Maintenance",
-    description: "Comprehensive annual maintenance contracts for all IT infrastructure",
-    link: "/services#it-amc",
-  },
-  {
-    icon: Network,
-    title: "Network Setup & Configuration",
-    description: "Professional network design and configuration services",
-    link: "/services#network-setup",
-  },
-  {
-    icon: Camera,
-    title: "CCTV Installation & Surveillance",
-    description: "Advanced security camera systems and surveillance solutions",
-    link: "/services#cctv",
-  },
-  {
+    id: "infrastructure",
     icon: Server,
-    title: "Server & Data Center Setup",
-    description: "Professional server installation and data center infrastructure",
-    link: "/services#server-setup",
+    title: "Infrastructure Nexus",
+    description: "Network setup, configuration, server deployment, and data center setup.",
+    link: "/services#network-setup",
+    color: "from-blue-400 to-cyan-300"
+  },
+  {
+    id: "continuity",
+    icon: Activity,
+    title: "Continuity Engine",
+    description: "IT AMC, maintenance, enterprise support, and system reliability.",
+    link: "/services#it-amc",
+    color: "from-emerald-400 to-teal-300"
+  },
+  {
+    id: "surveillance",
+    icon: ShieldCheck,
+    title: "Surveillance Grid",
+    description: "Advanced CCTV systems, security networks, and monitoring protocols.",
+    link: "/services#cctv",
+    color: "from-violet-400 to-purple-300"
+  },
+  {
+    id: "hr",
+    icon: Users,
+    title: "Human Resource Core",
+    description: "IT manpower supply, contract staffing, and corporate vehicle leasing.",
+    link: "/services#manpower",
+    color: "from-orange-400 to-amber-300"
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section className="py-20 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-12">
-          <h2 className="text-4xl font-bold tracking-tight mb-4">Our Services</h2>
+    <section className="py-32 px-4 relative overflow-hidden">
+      {/* Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.6 }} 
+          viewport={{ once: true }} 
+          className="text-center mb-20"
+        >
+          <span className="text-primary text-sm font-medium tracking-[0.3em] uppercase mb-4 block">System Capabilities</span>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Holographic Service Modules</h2>
           <div className="max-w-2xl mx-auto">
-            <p className="text-lg text-muted-foreground font-normal">Comprehensive IT solutions tailored to your business needs</p>
+            <p className="text-lg text-muted-foreground font-light">
+              Deploying advanced solutions across the digital spectrum.
+            </p>
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <motion.div key={service.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} viewport={{ once: true }}>
-              <Card className="h-full glass-card glass-hover cursor-pointer">
-                <CardHeader>
-                  <service.icon className="h-12 w-12 text-primary mb-4" />
-                  <CardTitle>{service.title}</CardTitle>
-                  <CardDescription>{service.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Link to={service.link}>
-                    <Button variant="ghost" className="p-0 h-auto text-primary hover:text-accent">
-                      Read more <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+            <motion.div 
+              key={service.id} 
+              initial={{ opacity: 0, y: 20 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.5, delay: index * 0.1 }} 
+              viewport={{ once: true }}
+            >
+              <GlareHover 
+                borderRadius="1rem" 
+                glareColor="#00f0ff" 
+                glareOpacity={0.2}
+                className="h-full"
+              >
+                <Card className="h-full glass-card border-white/40 bg-white/10 hover:bg-white/20 transition-colors group relative overflow-hidden">
+                  <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${service.color} opacity-50 group-hover:opacity-100 transition-opacity`} />
+                  
+                  <CardHeader className="pt-8">
+                    <div className="mb-6 relative">
+                      <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
+                      <service.icon className="h-10 w-10 text-foreground/80 group-hover:text-primary transition-colors relative z-10" />
+                    </div>
+                    <CardTitle className="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">
+                      {service.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                      {service.description}
+                    </p>
+                    <Link to={service.link} className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-foreground/60 hover:text-primary transition-colors">
+                      Access Module <ArrowRight className="ml-2 h-3 w-3" />
+                    </Link>
+                  </CardContent>
+                  
+                  {/* Decorative Tech Lines */}
+                  <div className="absolute bottom-4 right-4 flex gap-1 opacity-20">
+                    <div className="w-1 h-1 bg-foreground rounded-full" />
+                    <div className="w-1 h-1 bg-foreground rounded-full" />
+                    <div className="w-1 h-1 bg-foreground rounded-full" />
+                  </div>
+                </Card>
+              </GlareHover>
             </motion.div>
           ))}
         </div>

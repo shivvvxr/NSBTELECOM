@@ -147,7 +147,7 @@ function FluidSimulation() {
       swapVel();
 
       materials.splat.uniforms.uTarget.value = densRead.texture;
-      materials.splat.uniforms.color.value.set(0.2, 0.4, 1.0); // Blueish color
+      materials.splat.uniforms.color.value.set(0.0, 0.9, 1.0); 
       render(densWrite, materials.splat);
       swapDens();
     }
@@ -215,10 +215,7 @@ function FluidSimulation() {
       meshRef.current.material = materials.display;
       materials.display.uniforms.uTexture.value = densRead.texture;
       materials.display.uniforms.texelSize.value.set(1 / dyeRes, 1 / dyeRes);
-      // Render to screen (final pass)
       gl.setRenderTarget(null);
-      // We don't call render() here because the mesh is in the scene and will be rendered by the main loop
-      // But since we are hijacking the mesh material for GPGPU, we need to ensure it has the display material for the final draw
     }
   });
 

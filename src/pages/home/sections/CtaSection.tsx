@@ -1,22 +1,44 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Zap } from "lucide-react";
 import { Link } from "react-router";
 
 export default function CtaSection() {
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-green-600/20 to-blue-800/20 pointer-events-none" />
+    <section className="py-32 px-4 relative overflow-hidden">
+      {/* Quantum Portal Effect */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[600px] h-[600px] rounded-full border border-primary/20 animate-[spin_10s_linear_infinite]" />
+        <div className="absolute w-[500px] h-[500px] rounded-full border border-primary/10 animate-[spin_15s_linear_infinite_reverse]" />
+        <div className="absolute w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
+      </div>
+
       <div className="container mx-auto max-w-4xl text-center relative z-10">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="glass-card rounded-2xl p-12">
-          <h2 className="text-4xl font-bold tracking-tight mb-4">Ready to Transform Your Business?</h2>
-          <div className="mb-8">
-            <p className="text-lg text-muted-foreground font-normal">Let's discuss how NSB TELECOM can help you achieve your digital transformation goals.</p>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }} 
+          whileInView={{ opacity: 1, scale: 1 }} 
+          transition={{ duration: 0.8 }} 
+          viewport={{ once: true }} 
+          className="glass-card rounded-[2rem] p-12 md:p-20 border border-white/50 shadow-[0_0_50px_rgba(0,240,255,0.15)] backdrop-blur-2xl"
+        >
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-8 animate-pulse">
+            <Zap className="w-8 h-8 text-primary" />
           </div>
+          
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+            Ready to Ascend?
+          </h2>
+          
+          <div className="mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground font-light">
+              Initiate the transformation protocol. Let NSB TELECOM engineer your future infrastructure.
+            </p>
+          </div>
+          
           <Link to="/contact">
-            <Button size="lg" className="text-base shadow-lg">
-              Get in Touch
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button size="lg" className="h-16 px-10 text-lg rounded-full bg-foreground text-background hover:bg-foreground/90 shadow-xl transition-all hover:scale-105 group">
+              Request Enterprise Quote
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </motion.div>
