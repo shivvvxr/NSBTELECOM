@@ -37,19 +37,29 @@ export default function ClientsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               viewport={{ once: true }}
-              className="group relative"
+              className="group relative p-4 rounded-xl hover:bg-white/50 transition-colors duration-300 overflow-hidden"
             >
+              {/* Scanning Beam Effect */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/10 to-transparent -translate-y-full group-hover:animate-[scan-vertical_1.5s_ease-in-out_infinite] pointer-events-none" />
+              <div className="absolute inset-0 border border-primary/0 group-hover:border-primary/20 rounded-xl transition-colors duration-300" />
+              
               <div className="absolute -inset-4 bg-primary/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <img
                 src={client.logo}
                 alt={client.name}
-                className="h-12 md:h-16 w-auto object-contain opacity-60 group-hover:opacity-100 transition-all duration-300 mix-blend-multiply"
+                className="h-12 md:h-16 w-auto object-contain opacity-60 group-hover:opacity-100 transition-all duration-300 mix-blend-multiply relative z-10"
                 loading="lazy"
               />
             </motion.div>
           ))}
         </div>
       </div>
+      <style>{`
+        @keyframes scan-vertical {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(100%); }
+        }
+      `}</style>
     </section>
   );
 }

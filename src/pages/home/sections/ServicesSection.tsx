@@ -69,16 +69,17 @@ export default function ServicesSection() {
               key={service.id} 
               initial={{ opacity: 0, y: 20 }} 
               whileInView={{ opacity: 1, y: 0 }} 
+              whileHover={{ y: -10, scale: 1.02 }}
               transition={{ duration: 0.5, delay: index * 0.1 }} 
               viewport={{ once: true }}
             >
               <GlareHover 
                 borderRadius="1rem" 
                 glareColor="#00f0ff" 
-                glareOpacity={0.2}
+                glareOpacity={0.4}
                 className="h-full"
               >
-                <Card className="h-full glass-card border-white/40 bg-white/10 hover:bg-white/20 transition-colors group relative overflow-hidden">
+                <Card className="h-full glass-card border-white/40 bg-white/10 hover:bg-white/20 transition-all duration-500 group relative overflow-hidden hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:border-primary/50">
                   <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${service.color} opacity-50 group-hover:opacity-100 transition-opacity`} />
                   
                   <CardHeader className="pt-8">
