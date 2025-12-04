@@ -39,8 +39,10 @@ export default function ClientsSection() {
               viewport={{ once: true }}
               className="group relative p-4 rounded-xl hover:bg-white/50 transition-colors duration-300 overflow-hidden"
             >
-              {/* Scanning Beam Effect */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/10 to-transparent -translate-y-full group-hover:animate-[scan-vertical_1.5s_ease-in-out_infinite] pointer-events-none" />
+              {/* Volumetric Scanning Beam Effect */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/20 to-transparent -translate-y-full group-hover:animate-[scan-vertical_2s_ease-in-out_infinite] pointer-events-none blur-sm" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/10 to-transparent -translate-y-full group-hover:animate-[scan-vertical_2s_ease-in-out_infinite] pointer-events-none delay-75" />
+              
               <div className="absolute inset-0 border border-primary/0 group-hover:border-primary/20 rounded-xl transition-colors duration-300" />
               
               <div className="absolute -inset-4 bg-primary/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

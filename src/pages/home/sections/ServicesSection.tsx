@@ -80,9 +80,13 @@ export default function ServicesSection() {
                 className="h-full"
               >
                 <Card className="h-full glass-card border-white/40 bg-white/10 hover:bg-white/20 transition-all duration-500 group relative overflow-hidden hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:border-primary/50">
+                  {/* Volumetric Light Beam */}
+                  <div className="absolute -top-[50%] left-1/2 -translate-x-1/2 w-[150%] h-[150%] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(0,240,255,0.1)_30deg,transparent_60deg)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-[spin_4s_linear_infinite] pointer-events-none blur-3xl" />
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  
                   <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${service.color} opacity-50 group-hover:opacity-100 transition-opacity`} />
                   
-                  <CardHeader className="pt-8">
+                  <CardHeader className="pt-8 relative z-10">
                     <div className="mb-6 relative">
                       <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
                       <service.icon className="h-10 w-10 text-foreground/80 group-hover:text-primary transition-colors relative z-10" />

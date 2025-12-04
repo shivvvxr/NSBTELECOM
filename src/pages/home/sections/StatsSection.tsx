@@ -48,12 +48,15 @@ export default function StatsSection() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="flex flex-col items-center text-center group"
+                  className="flex flex-col items-center text-center group relative"
                 >
-                  <div className="mb-4 p-4 rounded-2xl bg-white/50 border border-white/60 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  {/* Volumetric Glow */}
+                  <div className="absolute inset-0 bg-primary/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none scale-150" />
+                  
+                  <div className="mb-4 p-4 rounded-2xl bg-white/50 border border-white/60 shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10">
                     <stat.icon className="w-8 h-8 text-primary" />
                   </div>
-                  <div className="text-4xl md:text-5xl font-black tracking-tighter text-foreground mb-2 group-hover:text-primary transition-colors">
+                  <div className="text-4xl md:text-5xl font-black tracking-tighter text-foreground mb-2 group-hover:text-primary transition-colors relative z-10">
                     {stat.value}
                   </div>
                   <div className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-1">
