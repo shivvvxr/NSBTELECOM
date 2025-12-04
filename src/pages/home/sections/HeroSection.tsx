@@ -4,6 +4,7 @@ import { ArrowRight, Globe, Cpu, Zap } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router";
 import Orb from "@/components/Orb";
+import AIGlyphs from "@/components/AIGlyphs";
 
 export default function HeroSection() {
   const { scrollY } = useScroll();
@@ -14,6 +15,7 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0 bg-background">
+        <AIGlyphs />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-30 pointer-events-none">
            <Orb hue={190} hoverIntensity={0.5} rotateOnHover={true} forceHoverState={true} />
         </div>

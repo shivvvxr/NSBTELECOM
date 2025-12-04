@@ -2,10 +2,12 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import { Link } from "react-router";
+import AIGlyphs from "@/components/AIGlyphs";
 
 export default function CtaSection() {
   return (
     <section className="py-32 px-4 relative overflow-hidden">
+      <AIGlyphs />
       {/* Quantum Portal Effect */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-[600px] h-[600px] rounded-full border border-primary/20 animate-[spin_10s_linear_infinite]" />

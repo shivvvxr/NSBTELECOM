@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Building2, Globe2, ShieldCheck, Clock } from "lucide-react";
+import AIGlyphs from "@/components/AIGlyphs";
 
 const stats = [
   { 
@@ -31,6 +32,7 @@ const stats = [
 export default function StatsSection() {
   return (
     <section className="py-20 px-4 relative">
+      <AIGlyphs />
       <div className="container mx-auto max-w-6xl">
         <div className="relative">
           {/* Holographic Cube Container Effect */}

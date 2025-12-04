@@ -1,6 +1,7 @@
 import ScrollFloat from "@/components/ScrollFloat";
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import { CheckCircle2, ShieldCheck, Zap, Clock } from "lucide-react";
+import AIGlyphs from "@/components/AIGlyphs";
 
 const features = [
   {
@@ -31,8 +32,9 @@ const features = [
 
 export default function WhyChooseSection() {
   return (
-    <section className="py-20 bg-secondary/30 relative">
-      <div className="container mx-auto max-w-6xl px-4 mb-16 text-center">
+    <section className="py-20 bg-secondary/30 relative overflow-hidden">
+      <AIGlyphs />
+      <div className="container mx-auto max-w-6xl px-4 mb-16 text-center relative z-10">
         <ScrollFloat
           animationDuration={1}
           ease="back.inOut(2)"
