@@ -33,7 +33,7 @@ export default function StatsSection() {
   return (
     <section className="py-20 px-4 relative">
       <AIGlyphs />
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-6xl relative z-10">
         <div className="relative">
           {/* Holographic Cube Container Effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 rounded-3xl blur-3xl -z-10" />
